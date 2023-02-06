@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/3e81f8aed4.css" crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="users-admin.css">
+    <title>Users - Admin Panel</title>
+</head>
+<body>
+        <div class="left-side" id="users-admin-page">
+            <a href="../Index/index.html"><div class="zed-nav">zed</div></a>
+            <a href="./admin.html"><div class="dashboard-admin"><img class="left-side-icons" src="./images/dashboard analytics icon.png" alt="">
+                Dashboard</div></a>
+            <a href="./blogs-admin.html"><div class="blogs-admin"><img class="left-side-icons" src="./images/blogs icon.png" alt=""> Blogs</div></a>
+            <a href="#users-admin-page"><div class="users-admin"><img class="left-side-icons" src="./images/users logo.png" alt=""> Users</div></a>
+        </div>
+        <div class="right-side">
+            <header>
+                <div class="welcome-text">WELCOME ADMIN</div>
+                <a href="../Login/login.html"><div class="logout-admin">Logout</div></a>
+            </header>
+            <div class="blogs-title-and-add-blog-part">
+                <div id="panel-page-title">
+                    <div class="users-icon"><img src="./images/users logo.png" alt="dashboard analytics icon"></div>
+                    Users
+                </div>
+            </div>
+            <div class="users-table">
+                <div>
+                    <!-- The Users Table Header -->
+                    <ul class="users-table-header">
+                        <li id="users-table-header-element1">N</li>
+                        <li id="users-table-header-element2">Username</li>
+                        <li id="users-table-header-element3">Role</li>
+                        <li id="users-table-header-element4">Action</li>
+                    </ul>
+                    <div>
+                        <!-- List of the store users -->
+                        <ul class="users-list-1">
+                            <li id="users-list-number">1</li>
+                            <li id="users-list-title">Jane Doe</li>
+                            <li id="users-list-author">Admin</li>
+                            <ul id="users-list-action">
+                                <li class="edit-users">Edit</li>
+                                <li class="delete-users">Delete</li>
+                            </ul>
+                        </ul>
+                        <ul class="users-list-2">
+                            <li id="users-list-number">2</li>
+                            <li id="users-list-title">Smith Carter</li>
+                            <li id="users-list-author">Author</li>
+                            <ul id="users-list-action">
+                                <li class="edit-users">Edit</li>
+                                <li class="delete-users">Delete</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
