@@ -1,0 +1,453 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1.8rem;
+    font-family: 'Michroma', 'Poppins';
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url('images/Background\ Good\ blue\ blur.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    height: 100vh; 
+}
+
+
+                                                       /* HOME PAGE */
+header ul li:hover{
+    color:#7c8490;
+    cursor: pointer;
+}     
+.resume-button:hover{
+    color: #b7aeae;
+    cursor: pointer;
+}                                                     
+.home-page{
+    height: 100vh;
+    border: solid #fff;
+}
+         /* Nav Bar */
+.nav-bar{
+    position: fixed;
+    z-index: 10;
+    /* height: 20px; */
+    width: 100%;
+    display: flex;
+    top: 3px;
+}
+.zed-nav{
+    position: absolute;
+    width: 152px;
+    height: 93px;
+    left: 49px;
+    top: 3px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 85px;
+    color: rgba(211, 196, 196, 0.65);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.home-nav{
+    position: absolute;
+    width: 98px;
+    height: 40px;
+    left: 550px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.about-me-nav{
+    position: absolute;
+    width: 166px;
+    height: 46px;
+    left: 650px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.skills-nav{
+    position: absolute;
+    width: 85px;
+    height: 46px;
+    left: 803px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.my-work-nav {
+    position: absolute;
+    width: 152px;
+    height: 46px;
+    left: 893px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.blogs-nav{
+    position: absolute;
+    width: 117px;
+    height: 46px;
+    left: 1035px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.contact-me-nav{
+    position: absolute;
+    width: 204px;
+    height: 46px;
+    left: 1127px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.login-button-home{
+    position: absolute;
+    width: 85px;
+    height: 25px;
+    left: 1298px;
+    top: 36px;
+    background: #0A2647;
+    border-radius: 5px;
+    border: #0A2647;
+}
+.login-button-text-home{
+    position: absolute;
+    width: 204px;
+    height: 46px;
+    left: 1301px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+                    /* Home Page Navigation Bars */
+
+.navigation-home{
+    right: 20px;
+    position: inherit;
+    list-style: none;
+    /* border: solid #fff; */
+    margin-top: 310px;
+    margin-left: 49px;
+    width: 125px;
+
+}
+.navigation-home li{
+    width: 45px;
+    height: 0;
+    background-color: #ccc;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 1%;
+    margin-top: 40px;
+}
+.navigation-home .current-page-bar{
+    width: 90px;
+}
+
+/* ..................................................External Files are below................................................................. */
+
+
+                                                /* LOGIN PAGE */
+.home-page-login {
+    display: flex;
+    /* border: solid red; */
+    height: 100vh;
+}
+.navigation-login li{
+    width: 45px;
+    height: 0;
+    background-color: #ccc;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 1%;
+    margin-top: 40px;
+}
+.navigation-login{
+    right: 20px;
+    position: inherit;
+    list-style: none;
+    /* border: solid #fff; */
+    margin-top: 310px;
+    margin-left: 49px;
+    width: 125px;
+}
+.login-container{
+    /* border: solid green; */
+    height: 470px;
+    width: 450px;
+    margin-left: 330px;
+    margin-top: 180px;
+    background: rgba(41, 41, 43, 0.7);
+    border-radius: 13px;
+}
+.welcome-login {
+    color:#16EAEA;
+    padding-left: 27%;
+    padding-top: 10%;
+    font-size: 30px;
+}
+.email-input-login{
+    box-sizing: border-box;
+    position: absolute;
+    width: 350px;
+    height: 47px;
+    margin-top: 45px;
+    background: rgba(66, 66, 66, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 40px;
+    font-size: 15px;
+    color: #fff;
+    border: solid rgb(62, 61, 61);
+}
+.password-input-login{
+    box-sizing: border-box;
+    position: absolute;
+    width: 350px;
+    height: 47px;
+    margin-top: 120px;
+    background: rgba(66, 66, 66, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 40px;
+    font-size: 15px;
+    color: #fff;
+    border: solid rgb(62, 61, 61);
+}
+.keep-me-signed-in-container{
+    display: flex;
+    /* border: solid yellow; */
+    margin-top: 180px;
+    height: 50px;
+    width: 350px;
+    margin-left: 40px;
+}
+.login-checkbox{
+    position: absolute;
+    width: 25px;
+    height: 22px;
+    margin-left: 40px;
+    margin-top: 12px;
+    background: #D9D9D9;
+}
+.keep-me-signed-in-text{
+    color: #fff;
+    font-size: 19px;
+    margin-left: 73px;
+    margin-top: 8px;
+}
+.login-button{
+    box-sizing: border-box;
+    position: absolute;
+    width: 350px;
+    height: 47px;
+    background: rgba(22, 234, 234, 0.6);
+    border: solid #0A2647;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-left: 40px;
+    margin-top: 10px;
+    color: white;
+    font-size: 24px;
+}
+.need-account-container{
+    display: flex;
+    /* border: solid blue; */
+    height: 40px;
+    width: 335px;
+    margin-top: 80px;
+    margin-left: 55px;
+    font-size: 19px;
+}
+.need-account-text{
+    color: #fff;
+}
+.signup-text{
+    color: #16EAEA;
+    padding-left: 5px;
+}
+                                                        /* SIGN UP PAGE */
+                                                   
+.signup-container{
+    height: 550px;
+    width: 450px;
+    margin-left: 330px;
+    margin-top: 150px;
+    background: rgba(41, 41, 43, 0.7);
+    border-radius: 13px;
+}
+.navigation-signup li{
+    width: 45px;
+    height: 0;
+    background-color: #ccc;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 1%;
+    margin-top: 40px;
+}
+.navigation-signup{
+    right: 20px;
+    position: inherit;
+    list-style: none;
+    /* border: solid #fff; */
+    margin-top: 310px;
+    margin-left: 49px;
+    width: 125px;
+}
+.signup-title{
+    color:#16EAEA;
+    padding-left: 27%;
+    padding-top: 8%;
+    font-size: 30px;
+}
+.username-input-signup{
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 350px;
+    height: 47px;
+    margin-top: 30px;
+    background: rgba(66, 66, 66, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 40px;
+    font-size: 15px;
+    color: #fff;
+    border: solid rgb(62, 61, 61);
+}
+.email-input-signup{
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 350px;
+    height: 47px;
+    margin-top: 30px;
+    background: rgba(66, 66, 66, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 40px;
+    font-size: 15px;
+    color: #fff;
+    border: solid rgb(62, 61, 61);
+}
+.password-input-signup {
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 350px;
+    height: 47px;
+    margin-top: 30px;
+    background: rgba(66, 66, 66, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 40px;
+    font-size: 15px;
+    color: #fff;
+    border: solid rgb(62, 61, 61);
+}
+.password2-input-signup{
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 350px;
+    height: 47px;
+    margin-top: 30px;
+    background: rgba(66, 66, 66, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    margin-left: 40px;
+    font-size: 15px;
+    color: #fff;
+    border: solid rgb(62, 61, 61);
+}
+.signup-button{
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: 217px;
+    height: 47px;
+    background: rgba(22, 234, 234, 0.6);
+    border: solid #0A2647;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-left: 110px;
+    margin-top: 30px;
+    color: white;
+    font-size: 24px;
+}
+.already-have-account-container{
+    display: flex;
+    /* border: solid blue; */
+    height: 35px;
+    width: 340px;
+    margin-top: 30px;
+    margin-left: 50px;
+    font-size: 16px;
+}
+.already-have-account-text{
+    color: #fff;
+}
+.login-text{
+    color: #16EAEA;
+    padding-left: 5px;
+}
+                                                    /* Form validation CSS */
+.input-control .error{
+    color: #ff3860;
+    margin-left: 41px;
+}
+.input-control input:focus{
+    outline: 0;
+}
+.input-control.success input{
+    border-color: #09c372;
+}
+.input-control.error input{
+    border-color: #ff3860;
+}
+.input-control .error{
+    border-color: #ff3860;
+    font-size: 9px;
+    height: 3px;
+}

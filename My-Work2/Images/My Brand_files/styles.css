@@ -1,0 +1,247 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1.8rem;
+    /* font-family: 'Michroma', 'Poppins'; */
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url('images/Background\ Good\ blue\ blur.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    height: 100vh; 
+    
+}
+
+
+                                /* HOME PAGE */
+
+         /* Nav Bar */
+
+.nav-bar{
+    position: fixed;
+    z-index: 10;
+}
+.zed-nav{
+    position: absolute;
+    width: 152px;
+    height: 93px;
+    left: 49px;
+    top: 3px;
+
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 85px;
+    color: rgba(211, 196, 196, 0.65);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.home-nav{
+    position: absolute;
+    width: 98px;
+    height: 40px;
+    left: 550px;
+    top: 30px;
+
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.about-me-nav{
+    position: absolute;
+    width: 166px;
+    height: 46px;
+    left: 650px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.skills-nav{
+    position: absolute;
+    width: 85px;
+    height: 46px;
+    left: 803px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.my-work-nav {
+    position: absolute;
+    width: 152px;
+    height: 46px;
+    left: 893px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.blogs-nav{
+    position: absolute;
+    width: 117px;
+    height: 46px;
+    left: 1035px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.contact-me-nav{
+    position: absolute;
+    width: 204px;
+    height: 46px;
+    left: 1127px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.login-button{
+    position: absolute;
+    width: 85px;
+    height: 25px;
+    left: 1298px;
+    top: 36px;
+    background: #0A2647;
+    border-radius: 5px;
+    border: #0A2647;
+}
+.login-button-text{
+    position: absolute;
+    width: 204px;
+    height: 46px;
+    left: 1301px;
+    top: 30px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+}
+
+                     /* Home Page Text and Button */
+.home-text{
+    border: solid #FFFFFF;
+    margin-left: 15%;
+    margin-right: 50%;
+    
+    padding-top: 235px;
+    align-items: center;
+}
+.home-small-text{
+    color: #d9d1d1;
+    font-family: 'Michroma';
+    font-size: 20px;
+    /* padding-top: 220px;
+    padding-left: 240px; */
+    
+}
+.home-edwin-text{
+    color: rgba(226, 219, 219, 0.65);
+    font-family: 'Michroma';
+    font-size: 50px;
+    /* padding-left: 233px; */
+    font-weight: 12;
+
+}
+.home-medium-text{
+    color: #b7aeae;
+    font-family: 'Michroma';
+    font-size: 23px;
+    margin-top: 75px;
+    /* padding-left: 240px;
+    padding-top: 110px; */
+    font-weight: 10;   
+}
+
+.resume-button{
+    position: absolute;
+    width: 118px;
+    height: 29px;
+    /* left: 240px; */
+    top: 73%;
+    background: #0A2647;
+    border-radius: 4px;
+    border: #0A2647;
+    z-index: -1;
+}
+.resume-button-text{
+    color: #FFFFFF;
+    font-family: 'Michroma';
+    font-size: 16px;
+    padding-top: 39px;
+    padding-left: 247px;
+    font-weight: 12;  
+    z-index: 0;
+
+}
+
+.scroll-down-text{
+    color: #a09a9a;
+    font-family: 'Michroma';
+    font-size: 14px;
+    text-align: center;
+    padding-top: 70px;
+}
+
+/* Page Navigation Bars */
+.navigation{
+    margin: 10px;
+    padding: 0;
+    right: 20px;
+    position: inherit;
+    list-style: none;
+    top: 50%;
+
+}
+.navigation li{
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border: 2px solid #999;
+    border-radius: 50%;
+    margin-top: 10px;
+
+}
