@@ -31,7 +31,7 @@
             <div>
                 <tr>        <!--  For rows -->
                     <td>    <!--  For columns -->
-                        <form id="add-blog-form" autocomplete="off" onsubmit="onFormSubmit()">
+                        <form id="add-blog-form" autocomplete="off">
 
                             <div class="add-blog-form-title">Create a Blog</div>
                             <div class="input-control">
@@ -39,19 +39,20 @@
                                 <div class="error"></div>
                             </div>
                             <div class="input-control">
-                                <input type="text" id="authorInput" class="add-blog-form-author-input" placeholder="Author">
+                                <input type="text" id="titleInput" class="add-blog-form-title-input" placeholder="Title">
                                 <div class="error"></div>
                             </div>
                             <div class="input-control">
-                                <input type="text" id="titleInput" class="add-blog-form-title-input" placeholder="Title">
+                                <input type="text" id="authorInput" class="add-blog-form-author-input" placeholder="Author">
                                 <div class="error"></div>
                             </div>
                             <div class="input-control">
                                 <textarea type="text" id="bodyTextarea" class="add-blog-form-body-input" placeholder="Body" rows="9" cols="70"></textarea>
                                 <div class="error"></div>
                             </div>
-                            <div>
-                                <button type="submit" id="add-blog-form-save-button">Save Blog</button>
+                            <div class="add-blog-buttons-div">
+                                <button type="submit" id="add-blog-form-save-button" onclick="Submit()">Save Blog</button>
+                                <button type="reset" id="Reset">Reset</button>
                             </div>
 
                         </form>
@@ -63,7 +64,8 @@
                                         <th id="blogs-table-header-element1">N</th>
                                         <th id="blogs-table-header-element2">Title</th>
                                         <th id="blogs-table-header-element3">Author</th>
-                                        <th id="blogs-table-header-element4">Action</th>
+                                        <th id="blogs-table-header-element4">Body(Preview)</th>
+                                        <th id="blogs-table-header-element5">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="t-body">
@@ -74,6 +76,6 @@
                 </tr>
             </div>
         </div>
-        <script type="text/javascript" src="./add-blog.js"></script>
+        <script type="text/javascript" src="./add-blog-prototype.js"></script>
 </body>
 </html>

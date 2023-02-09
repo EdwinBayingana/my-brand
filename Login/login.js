@@ -53,4 +53,7 @@ const validateInputs = () => {
         setSuccess(password);
     }
 
+    if(emailValue && passwordValue){
+        console.log(location.href = "../Admin-Panel/admin.html");
+    }
 };

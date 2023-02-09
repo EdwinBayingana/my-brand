@@ -1,21 +1,23 @@
 var selectedRow = null;
+
 function onFormSubmit(e){
     event.preventDefault();
     var formData = readFormData();
-    if(selectedRow === null){
+    if(selectedRow == null){
         insertNewRecord(formData);
     }
     else{
-        
+        updateRecord(formData);
     }
+    resetForm();
 }
 
 // Retrieve the Data
 function readFormData(){
     var formData = {};
-    formData["authorInput"] = document.getElementById("blogId").value;
-    formData["authorInput"] = document.getElementById("authorInput").value;
+    formData["bodyId"] = document.getElementById("blogId").value;
     formData["titleInput"] = document.getElementById("titleInput").value;
+    formData["authorInput"] = document.getElementById("authorInput").value;
     formData["bodyTextarea"] = document.getElementById("bodyTextarea").value;
     return formData;
 }
@@ -32,9 +34,33 @@ function insertNewRecord(data){
     var cell3 = newRow.insertCell(2);
         cell3.innerHTML = data.authorInput;
     var cell4 = newRow.insertCell(3);
-        cell4.innerHTML = `<button>Edit</button> <button>Delete</button>`;    
-        
+        cell4.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick="onDelete(this)">Delete</button>`;        
 }
+
+//Edit the data
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("bodyId").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("titleInput").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("authorInput").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("bodyTextarea").value = selectedRow.cells[3].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.bodyId;
+    selectedRow.cells[1].innerHTML = formData.titleInput;
+    selectedRow.cells[2].innerHTML = formData.authorInput;
+    selectedRow.cells[3].innerHTML = formData.bodyTextarea;
+}
+
+//Delete the data
+function onDelete(td) {
+    if (confirm('Are you sure you want to delete this Blog?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById('blogs-table').deleteRow(row.rowIndex);
+        resetForm();
+    }
+}
+
 
 //............................................................Form Validation Add-Blog Form..............................................................
 const form = document.getElementById('add-blog-form');
@@ -74,24 +100,24 @@ const validateInputs = () => {
     const bodyValue = body.value.trim();
 
 
-    if(blogValue === '') {
+    if(blogValue == '') {
         setError(blogId, 'The Blog Id is required');
     } else {
         setSuccess(blogId);
     }
-    if(authorValue === '') {
+    if(authorValue == '') {
         setError(author, 'Author name is required');
     } else {
         setSuccess(author);
     }
 
-    if(titleValue === '') {
+    if(titleValue == '') {
         setError(title, 'Title is required');
     } else {
         setSuccess(title);
     }
 
-    if(bodyValue === '') {
+    if(bodyValue == '') {
         setError(body, 'The Body is required');
     } else {
         setSuccess(body);
