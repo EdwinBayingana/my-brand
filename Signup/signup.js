@@ -41,7 +41,7 @@ function addOfData(e) {
         // location.href = "../Admin-Panel/admin.html";
         location.reload();
     } else {
-        location.href = "../Index/index.html#contact-me-page";
+        location.href = "../index.html#contact-me-page";
     }
     
 }

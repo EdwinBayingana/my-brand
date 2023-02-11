@@ -414,6 +414,6 @@ header ul h2:hover{
 }
 .input-control .error{
     border-color: #ff3860;
-    font-size: 9px;
-    height: 3px;
+    font-size: 12px;
+    height: 10px;
 }

@@ -1,3 +1,16 @@
+[data-signedin = "true"] .hidden {
+    display: none;
+}
+[data-signedin = "false"] .hidden {
+    display: block;
+}
+[data-signedin = "true"] .visible {
+    display: block;
+}
+[data-signedin = "false"] .visible {
+    display: none;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -1228,8 +1241,8 @@ header ul h2:hover{
     display: flex;
     height: 40px;
     width: 40px;
-    /* border: solid purple; */
-    margin-left: 85%;
+    border: solid purple;
+    margin-left: 86%;
     border-radius: 6px;
 }
 /* ...................................................External Files are below................................................................. */
@@ -1620,6 +1633,6 @@ header ul h2:hover{
 }
 .input-control .error{
     border-color: #ff3860;
-    font-size: 9px;
-    height: 3px;
+    font-size: 12px;
+    height: 10px;
 }
