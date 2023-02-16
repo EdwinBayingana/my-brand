@@ -1,4 +1,21 @@
-                                                        // FORM VALIDATION on the SignUp page
+//Show Password Function
+function showPassword(){
+    var show = document.getElementById('password');
+    var show2 = document.getElementById('password2');
+
+    if (show.type == 'password') {
+        show.type = 'text'
+    } else {
+        show.type = 'password'
+    }
+
+    if (show2.type == 'password') {
+        show2.type = 'text'
+    } else {
+        show2.type = 'password'
+    }
+}
+//.................................................................FORM VALIDATION on the SignUp page....................................
 const form = document.querySelector('#form-2');
 const username = document.querySelector('#username');
 const email = document.querySelector('#email');

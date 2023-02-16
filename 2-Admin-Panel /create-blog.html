@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/3e81f8aed4.css" crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="create-blog.css">
+    <title>Add a Blog - Admin Panel</title>
+</head>
+<body>
+        <div class="left-side">
+            <a href="../index.html"><div class="zed-nav">zed</div></a>
+            <a href="./admin.html"><div class="dashboard-admin"><img class="left-side-icons" src="./images/dashboard analytics icon.png" alt="">
+                Dashboard</div></a>
+                <a href="./blogs-admin.html"><div class="blogs-admin"><img class="left-side-icons" src="./images/blogs icon.png" alt="">Blogs</div></a>
+            <a href="./users-admin.html"><div class="users-admin"><img class="left-side-icons" src="./images/users logo.png" alt="">Users</div></a>
+        </div>
+        <div class="right-side">
+            <header>
+                <div class="welcome-text">WELCOME ADMIN</div>
+                <a href="../Login/login.html"><div class="logout-admin">Logout</div></a>
+            </header>
+            <!-- <a href="./blogs-admin.html"><div class="back-icon"><p>⃪</p></div></a> -->
+            
+                                        <!-- Add Blog Form -->
+            <div class="the-middle-part">
+                <tr>        <!--  For rows -->
+                    <td>    <!--  For columns -->
+                        <form id="add-blog-form" autocomplete="off">
+
+                            <div class="add-blog-form-title">Create a Blog</div>
+
+                            <div class="input-control" id="blogImageInputDiv">
+                                <input type="file" id="blogImageInput" name="image">
+                                <img src="" id="previewImage" class="previewImage" alt="">
+                              </div>
+                            <div class="input-control">
+                                <input type="text" id="blogId" placeholder="Blog's Id">
+                                <div class="error"></div>
+                            </div>
+                            <div class="input-control">
+                                <input type="text" id="titleInput" class="add-blog-form-title-input" placeholder="Title">
+                                <div class="error"></div>
+                            </div>
+                            <div class="input-control">
+                                <input type="text" id="authorInput" class="add-blog-form-author-input" placeholder="Author">
+                                <div class="error"></div>
+                            </div>
+                            <div class="input-control">
+                                <textarea type="text" id="bodyTextarea" class="add-blog-form-body-input" placeholder="Body" rows="9" cols="70"></textarea>
+                                <div class="error"></div>
+                            </div>
+                            <div class="add-blog-buttons-div">
+                                <button type="submit" id="add-blog-form-save-button" onclick="Submit()">Save Blog</button>
+                                <button type="reset" id="Reset">Reset</button>
+                            </div>
+
+                        </form>
+                        <td class="right-section-of-middle-part">
+                            <table class="blogs-table" id="blogs-table">
+                                <!-- The Blogs Table Header -->
+                                <thead class="blogs-table-header">
+                                    <tr>
+                                        <th id="blogs-table-header-element1">Image</th>
+                                        <th id="blogs-table-header-element2">N</th>
+                                        <th id="blogs-table-header-element3">Title</th>
+                                        <th id="blogs-table-header-element4">Author</th>
+                                        <th id="blogs-table-header-element5">Body</th>
+                                        <th id="blogs-table-header-element6">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="t-body">
+                                </tbody>
+                            </table>
+                        </td>
+                    </td>
+                </tr>
+            </div>
+        </div>
+        <script type="text/javascript" src="./create-blog.js"></script>
+</body>
+</html>

@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script defer src="./blogs1.js"></script>
 
     <title>Blogs 1 - My Brand</title>
@@ -89,15 +90,33 @@
                 <div class="blogs1-comment-container-middle-words">Feel free to leave a <br>comment below!</div>
                 <form id="form-4">
                     <div class="input-control">
-                        <textarea class="blogs1-comment-textarea" placeholder="Comment" id="blog-comment-input"></textarea>
+                        <textarea class="blogs1-comment-textarea" placeholder="Comment"  id="blog-comment-input"></textarea>
                         <div class="error" id="comment-input-error"></div>
                     </div>
-                <button type="submit" class="send-message-button-comment">Send Message!</button>
-            </form>
+                    <button type="submit" class="send-message-button-comment submit-btn">Send Message!</button>
+                </form>
             </div>
-            <div class="blogs1-user-comments">
-                
+
+            <!-- Comments bottom Container -->
+            <div class="comment__card">
+                <div class="pic">
+                </div>
+                <div class="comment__info">
+                    <small class="nickname">
+                        EdwinBayingana
+                    </small>
+                    <p class="comment">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, in magnam! Libero?
+                    </p>
+                    <div class="comment__bottom">
+                        <div class="heart__icon heart__icon--comment">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <small class="count">1</small>
+                    </div>
+                </div>
             </div>
+
         </section>
     </div>
 </body>

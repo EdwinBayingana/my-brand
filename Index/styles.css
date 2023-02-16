@@ -1242,7 +1242,7 @@ header ul h2:hover{
     display: flex;
     height: 40px;
     width: 40px;
-    border: solid purple;
+    border: solid black;
     margin-left: 86%;
     border-radius: 6px;
 }

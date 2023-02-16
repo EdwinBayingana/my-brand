@@ -2,7 +2,7 @@ const form = document.getElementById('form');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
-//Getting existing users from localStorage
+//Getting existing users from localStorage, otherwise set admin as the default user with id = 0.
 const users = JSON.parse(localStorage.getItem("users")) ?? [{
     id: 0,
     username: "BayinganaEdwin",
@@ -29,6 +29,16 @@ function login(e){
     } else {
         location.href = "../Admin-Panel/admin.html"   
         // alert("Hello Admin");
+    }
+}
+
+//Show Password Function
+function showPassword(){
+    var show = document.getElementById('password');
+    if (show.type == 'password') {
+        show.type = 'text'
+    } else {
+        show.type = 'password'
     }
 }
 

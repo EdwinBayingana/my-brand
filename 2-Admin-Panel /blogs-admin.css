@@ -1,0 +1,411 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Michroma';
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: black;
+    height: 100vh; 
+    display: flex;
+}
+
+                            /* Left side */
+.left-side{
+    background: rgba(41, 41, 43, 0.7);
+    /* border: solid grey; */
+    width: 450px;
+    height: 100%;
+}
+.zed-nav{
+    /* position: absolute; */
+    width: 152px;
+    height: 93px;
+    margin-left: 100px;
+    top: 3px;
+    font-family: 'Michroma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 85px;
+    color: #1E518C;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.dashboard-admin{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 57%;
+    padding-top: 30px;
+    padding-left: 20%;
+    height: 60px;
+    font-family: 'Michroma';
+    display: flex;
+}
+.left-side-icons{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+.blogs-admin{
+    /* border: solid green; */
+    color: #1E518C;
+    font-size: 20px;
+    font-family: 'Michroma';
+    padding-left: 20%;
+    padding-top: 10%;
+    display: flex;
+}
+.users-admin{
+    /* border: solid #fff; */
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Michroma';
+    padding-left: 20%;
+    padding-top: 10%;
+    display: flex;
+}
+                        /* Right side */
+header{
+    display: flex;
+    /* border: solid green; */
+    height: 130px;
+    width: 100%;
+    margin-top: 30px;
+}
+.right-side{
+    /* border: solid blue; */
+    height: 100%;
+    width: 100%;
+}
+
+.welcome-text{
+    /* border: solid #fff; */
+    /* color: rgba(124, 141, 95, 0.7); */
+    color: #ccc;
+    width: 75%;
+    text-align: center;
+    font-family: 'Michroma';
+    padding-top: 20px;
+    padding-left: 220px;
+    font-size: 35px;
+}
+.logout-admin{
+    background: #0A2647;
+    color: #fff;
+    font-family: 'Michroma';
+    font-size: 20px;
+    padding-top: 0;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 35px;
+    margin-left: 70px;
+}
+#panel-page-title{
+    color: #fff;
+    font-size: 23px;
+    font-family: 'Michroma';
+    /* border: solid red; */
+    height: 50px;
+    width: 140px;
+    font-weight: 900;
+    padding-top: 10px;
+    display: flex;
+}
+.dashboard-icon img{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.add-blog-button{
+    background-color: #0A2647;
+    border: #0A2647;
+    height: 25px;
+    border-radius: 5px;
+    width: 105px;
+    font-family: 'Michroma';
+    color: #fff;
+    margin-top: 18px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.add-blog-button:hover{
+    background-color: #174578;
+}
+.blogs-title-and-add-blog-part{
+    /* border: solid green; */
+    height: 54px;
+    width: 300px;
+    display: flex;
+}
+                                 /* Table title */
+.table-box{
+    color: #7C8D5F;
+    width: 100%;
+    padding: 10px;
+    /* border: solid green; */
+}
+ 
+.table-box table{
+    width: 100%;
+    /* border: 1px solid #ccc; */
+}
+.table-box table tr th{
+    border-right: 1px solid #ccc;
+    padding: 5px 0px 0px;
+    font-family: 'Michroma';
+    font-family: 20px;
+    /* border: 1px solid #ccc; */
+}
+.table-box table tr td{
+    border-right: 1px solid #ccc;
+    padding: 5px 0px 0px;
+    text-align: center;
+    color: #ccc;
+}
+
+
+/* table tr th{
+    border: solid red;
+} */
+
+/*..........................................................Popup modal.....................................................................................*/
+.modal{
+    height: 550px;
+    background-color: #ccc;
+    position: fixed;
+    top: 24%;
+    left: 60%;
+    transform: translate(-50%, -5%);
+    display: flex;
+    border-radius: 16px;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+.modal.active{
+    opacity: 1;
+    z-index: 1;
+    width: 60%;
+}
+.modal .close-icon{
+    position: absolute;
+    right: 8px;
+    font-size: 25px;
+    /* top: -30px; */
+    cursor: pointer;
+}
+.modal .left-modal{
+    width: 35%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.918);
+    float: left;
+    border-radius: 15px 0 0 15px;
+}
+.modal .left-modal .img-box{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    padding: 30px;
+}
+.modal .left-modal .img-box img{
+    border-radius: 10px;
+    width: 140px;
+    
+}
+.modal .left-modal .img-box p{
+    font-size: 30px;
+    padding: 10px;
+    position: absolute;
+    padding-left: 167px;
+    padding-top: 50px;
+}
+.modal .left-modal .img-box input{
+    width: 30%;
+    height: 100px;
+    position: absolute;
+    padding-left: 150px;
+    padding-top: 60px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.modal .right-modal{
+    width: 70%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.918);
+    border-left: 5px groove #0A2647;
+    float: left;
+    border-radius: 0 10px 10px 0;
+}
+                                                                /* Right hand side of popup modal*/
+
+#add-blog-form{
+    /* border: solid #fff; */
+    border-radius: 15px;
+    width: 350px;
+    /* height: 500px; */
+    margin-left: 10%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.add-blog-form-title{
+    color: #fff;
+    font-size: 25px;
+    width: 250px;
+    font-family: 'Michroma';
+    margin-left: 60px;
+    /* border: solid red; */
+}
+#authorInput{
+    background: rgba(72, 70, 70, 0.5);
+    font-family: 'Michroma';
+    padding-left: 5px;
+    margin-left: 25px;
+    width: 300px;
+    margin-top: 25px;
+    border-radius: 7px;
+    /* border: solid rgba(72, 70, 70, 0.212); */
+}
+#blogId{
+    height: 32px;
+    color: #fff;
+    background: rgba(72, 70, 70, 0.5);
+    font-family: 'Michroma';
+    padding-left: 5px;
+    margin-left: 25px;
+    width: 300px;
+    margin-top: 10px;
+    border-radius: 7px;
+}
+.image-1 {
+    margin-top: 10px;
+    float: right;
+    display: contents;
+  }
+.add-blog-form-author-input{
+    height: 40px;
+    width: 300px;
+    margin-top: 25px;
+    color: #fff;
+}
+.add-blog-form-title-input{
+    height: 40px;
+    color: #fff;
+    background: rgba(72, 70, 70, 0.5);
+    font-family: 'Michroma';
+    padding-left: 5px;
+    margin-left: 25px;
+    width: 300px;
+    margin-top: 25px;
+    border-radius: 7px;
+    /* border: solid rgba(72, 70, 70, 0.212); */
+}
+.add-blog-form-body-input{
+    background: rgba(72, 70, 70, 0.5);
+    font-family: 'Michroma';
+    padding-left: 5px;
+    margin-left: 25px;
+    width: 300px;
+    height: 150px;
+    margin-top: 25px;
+    border-radius: 7px;
+    /* border: solid rgba(72, 70, 70, 0.212); */
+    color: #fff;
+}
+#add-blog-form-save-button{
+    height: 30px;
+    width: 100px;
+    margin-left: 25px;
+    font-family: 'Michroma';
+    color: #fff;
+    background: rgba(22, 234, 234, 0.6);
+    margin-top: 15px;
+    /* margin-left: 70px; */
+    border-radius: 10px;
+    border: solid rgba(22, 234, 234, 0.6);
+    cursor: pointer;
+}
+.add-blog-buttons-div{
+    display: flex;
+}
+#Reset{
+    background-color:rgba(16, 2, 165, 0.54);
+    color: #fff;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 5px;
+    /* display: none; */
+}
+#update-btn{
+    background-color:rgba(165, 105, 2, 0.54);
+    color: #fff;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 5px;
+    /* display: none; */
+}
+#Update:hover{
+    background-color:rgba(165, 105, 2, 0.9);
+}
+#add-blog-form-save-button:hover{
+    background-color: rgba(0, 255, 255, 0.398);
+}
+
+.edit-button-blogs{
+    color: green;
+    background-color: #000;
+    border: solid #000;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.delete-button-blogs{
+    color: red;
+    background-color: #000;
+    border: solid #000;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.publish-button-blogs{
+    color: blue;
+    background-color: #000;
+    border: solid #000;
+    cursor: pointer;
+    margin-left: 10px;
+}
+                            /* Form Validation CSS */                           
+.input-control .error{
+    color: #ff3860;
+    margin-left: 27px;
+}
+.input-control input:focus{
+    outline: 0;
+}
+.input-control.success input{
+    border-color: #09c372;
+}
+.input-control.error input{
+    border-color: #ff3860;
+}
+.input-control .error{
+    border-color: #ff3860;
+    font-size: 12px;
+    height: 10px;
+}

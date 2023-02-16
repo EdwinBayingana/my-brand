@@ -255,26 +255,26 @@ header ul li:hover{
     color: #fff;
     border: solid rgb(62, 61, 61);
 }
-.keep-me-signed-in-container{
+.show-password-container{
     display: flex;
     /* border: solid yellow; */
-    margin-top: 30px;
+    margin-top: 15px;
     height: 50px;
     width: 350px;
     margin-left: 40px;
 }
-.login-checkbox{
+.show-password-checkbox{
     position: absolute;
     width: 25px;
-    height: 22px;
-    margin-left: 40px;
-    margin-top: 12px;
+    height: 18px;
+    margin-left: 0px;
+    margin-top: 10.5px;
     background: #D9D9D9;
 }
-.keep-me-signed-in-text{
+.show-password-text{
     color: #fff;
-    font-size: 19px;
-    margin-left: 73px;
+    font-size: 15px;
+    margin-left: 35px;
     margin-top: 8px;
 }
 .login-button{
