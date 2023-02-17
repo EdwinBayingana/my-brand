@@ -1607,11 +1607,17 @@ header ul h2:hover{
         width: 300px;
     }
     .footer{
-        width: 550px;
+        width: 100%;
+    }
+    .footer .icons{
+        margin-right: 0px;
     }
     .footer-text{
         align-items: center;
-        margin-left: 30%;
+        margin-left: 200px;
+    }
+    .footer img{
+        margin-left: 120px;
     }
 }
 

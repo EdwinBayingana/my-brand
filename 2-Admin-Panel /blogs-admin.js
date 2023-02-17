@@ -157,9 +157,6 @@ uploadImage.onchange = function(){
 }
 
 
-
-
-
 //............................................................Form Validation Add-Blog Form..............................................................
 // var userData = [];
 // var saveBlogBtn = document.querySelector('#add-blog-form-save-button');
