@@ -58,7 +58,8 @@ function addOfData(e) {
         // location.href = "../Admin-Panel/admin.html";
         location.reload();
     } else {
-        location.href = "../index.html#contact-me-page";
+        // alert("User registered successfully!");
+        // location.href = "../Login/login.html";
     }
     
 }
@@ -69,7 +70,7 @@ function addOfData(e) {
 form.addEventListener('submit', e => {
     e.preventDefault();
 
-    validateInputs() && addOfData();
+    validateInputs() && addOfData(e);
 });
 
 const setError = (element, message) => {
@@ -125,10 +126,12 @@ const validateInputs = () => {
 
     if(password2Value === '') {
         setError(password2, 'Please confirm your password');
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords doesn't match");
+    } else if (password2Value != passwordValue) {
+        setError(password2, "Passwords don't match");
     } else {
         setSuccess(password2);
+        alert("User registered successfully!");
+        location.href = "../Login/login.html";
     }
 
     if (usernameValue && emailValue && passwordValue && password2Value) {

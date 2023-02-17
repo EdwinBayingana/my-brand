@@ -405,7 +405,7 @@ header ul li:hover{
 .show-password-container{
     display: flex;
     /* border: solid yellow; */
-    /* margin-top: 30px; */
+    margin-top: 5px;
     height: 50px;
     width: 350px;
     margin-left: 40px;

@@ -23,13 +23,12 @@ function login(e){
     const user = users.find(user => user.email === email && user.password === password);
     localStorage.setItem("genuineUser", JSON.stringify(user));
 
-    if (user.id != 0 && user.email != "bayinganaedwin@gmail.com" && user.password != "foryoureyes") {
-        location.href = "../index.html"
-        localStorage.setItem("signedin", user.email);
-    } else {
-        location.href = "../Admin-Panel/admin.html"   
-        // alert("Hello Admin");
-    }
+    // if (user.id !== 0 && user.email !== "bayinganaedwin@gmail.com" && user.password !== "foryoureyes") {
+    //     location.href = "../index.html";
+    //     localStorage.setItem("signedin", user.email);
+    // } else {
+    //     location.href = "../Admin-Panel/admin.html";   
+    // }
 }
 
 //Show Password Function
@@ -92,6 +91,12 @@ const validateInputs = () => {
     } else {
         setSuccess(password);
         // console.log(location.href = "../Admin-Panel/admin.html");
+    }
+
+    if (emailValue == "bayinganaedwin@gmail.com" && passwordValue == "foryoureyes") {
+        location.href = "../Admin-Panel/admin.html";
+    } else {
+        alert("Sorry, user not found!");
     }
 
     if(emailValue && passwordValue){
