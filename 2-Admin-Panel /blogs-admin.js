@@ -4,7 +4,7 @@
 var form = document.querySelector('#add-blog-form');
 var allInput = document.querySelectorAll("input");
 var allTextarea = document.querySelectorAll("textarea");
-var userData = [];
+var blogsData = [];
 var blogImage = document.querySelector("#blog-image");
 var uploadImage = document.querySelector("#upload-field");
 var saveBlogBtn = document.querySelector('#add-blog-form-save-button');
@@ -41,20 +41,23 @@ saveBlogBtn.onclick = function(e){
     closeModalBtn.click();
 }
 
-// Storing Users in the localStorage
-if (localStorage.getItem("userData") != null) {
-    userData = JSON.parse(localStorage.getItem("userData"));
+
+// Storing Blogs in the localStorage
+if (localStorage.getItem("blogsData") != null) {
+    blogsData = JSON.parse(localStorage.getItem("blogsData"));
 }
 
 function registrationData(){
-    userData.push({
+    blogsData.push({
+        id: Date.now() * Math.random(),                                                         //Latest update
         blogImage: imgUrl == undefined ? "images/logo for add-blog-image.jpeg" : imgUrl,
         title: title.value,
         author: author.value,
         body: body.value
     });
-    var userString = JSON.stringify(userData);
-    localStorage.setItem("userData", userString);
+    console.log(blogsData);
+    var blogsString = JSON.stringify(blogsData);
+    localStorage.setItem("blogsData", blogsString);
 }
 
 
@@ -62,7 +65,7 @@ function registrationData(){
 var tableData = document.querySelector('#table-data')
 const getDataFromLocal = () =>{
     tableData.innerHTML = "";
-    userData.forEach((data,index)=>{
+    blogsData.forEach((data,index)=>{
         // console.log(index)
         tableData.innerHTML += `
             <tr index='${index}'>    
@@ -74,7 +77,6 @@ const getDataFromLocal = () =>{
                 <td>
                     <button class="edit-button-blogs edit-btn">Edit</button>
                     <button class="delete-button-blogs del-btn">Delete</button> 
-                    <button class="publish-button-blogs">Publish</button>
                 </td>
             </tr>
         `;
@@ -87,8 +89,8 @@ const getDataFromLocal = () =>{
             deleteButtons[i].onclick = function(){
                 var tr = this.parentElement.parentElement;
                 var id = tr.getAttribute("index");
-                userData.splice(id,1);
-                localStorage.setItem("userData", JSON.stringify(userData));
+                blogsData.splice(id,1);
+                localStorage.setItem("blogsData", JSON.stringify(blogsData));
                 var ans = confirm("Are you sure you want to delete this blog?");
                 if (ans == true) {
                     tr.remove();  
@@ -122,16 +124,18 @@ const getDataFromLocal = () =>{
             blogImage.src = blogImage1;
 
             updateBtn.onclick = function(){
-                userData[index] = {
+                blogsData[index] = {
                     blogImage: uploadImage.value == "" ? blogImage.src : imgUrl,
                     title: title.value,
                     author: author.value,
                     body: body.value
                 }
-                localStorage.setItem("userData", JSON.stringify(userData));
+                localStorage.setItem("blogsData", JSON.stringify(blogsData));
                 // form.reset('');
+                // validateInputs();
                 closeModalBtn.click();
                 location.reload();
+                
             }
         }
     }
@@ -148,7 +152,7 @@ uploadImage.onchange = function(){
         fReader.onload = function(e){
             imgUrl = e.target.result;
             blogImage.src = imgUrl;
-            console.log(imgUrl);
+            // console.log(imgUrl);
         }
         fReader.readAsDataURL(uploadImage.files[0]);
     } else {
@@ -158,7 +162,7 @@ uploadImage.onchange = function(){
 
 
 //............................................................Form Validation Add-Blog Form..............................................................
-// var userData = [];
+// var blogsData = [];
 // var saveBlogBtn = document.querySelector('#add-blog-form-save-button');
 // var form = document.getElementById('add-blog-form');
 // var blogId = document.getElementById('blogId');

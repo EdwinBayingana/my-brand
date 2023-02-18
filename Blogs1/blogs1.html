@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script defer src="./blogs1.js"></script>
+    <script defer src="./renderedBlog.js"></script>
 
     <title>Blogs 1 - My Brand</title>
 </head>
@@ -52,21 +53,10 @@
    
             <!-- Left Side of Page -->
             
-        <section class="blogs1-left-section">
-            <div>
-                <p class="blogs1-title">Blogs</p>
-            </div>
-            <div class="blogs1-image-and-name">
-                <div class="blogs1-image"></div>
-                <div class="blogs1-name">JANE  DOE</div>
-            </div>
-            <div class="blogs1-article-title">THE FIRST BLOG ON MY PORTFOLIO</div>
-            <div class="blogs1-article"><p>Artificial intelligence (AI) is a wide-ranging tool that enables people to rethink how we integrate information,
-                analyze data, and use the resulting insights to improve decision making—and already it is transforming every walk of life. <br>In this report,
-                Darrell West and John Allen discuss AI's application across a variety of sectors, address issues in its development, and offer recommendations for
-                getting the most out of AI while still protecting important human values...</p>
-            </div>
-        </section>
+        <div class="blogs1-left-section">
+            
+            
+        </div>
             <!-- Right Side of Page -->
         <section class="blogs1-right-section">
             <div class="blogs1-comment-container">
@@ -89,6 +79,9 @@
                 </div>
                 <div class="blogs1-comment-container-middle-words">Feel free to leave a <br>comment below!</div>
                 <form id="form-4">
+                    <div>
+                        <input type="text" placeholder="Name" id="blog-username-input">
+                    </div>
                     <div class="input-control">
                         <textarea class="blogs1-comment-textarea" placeholder="Comment"  id="blog-comment-input"></textarea>
                         <div class="error" id="comment-input-error"></div>
@@ -98,23 +91,25 @@
             </div>
 
             <!-- Comments bottom Container -->
-            <div class="comment__card">
-                <div class="pic">
-                </div>
-                <div class="comment__info">
-                    <small class="nickname">
-                        EdwinBayingana
-                    </small>
-                    <p class="comment">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, in magnam! Libero?
-                    </p>
-                    <div class="comment__bottom">
-                        <div class="heart__icon heart__icon--comment">
-                            <i class="far fa-heart"></i>
-                        </div>
-                        <small class="count">1</small>
+            <div class="comments__container">
+                <!-- <div class="comment__card">
+                    <div class="pic center__display">
                     </div>
-                </div>
+                    <div class="comment__info">
+                        <small class="nickname">
+                            EdwinBayingana
+                        </small>
+                        <p class="comment">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, in magnam! Libero?
+                        </p>
+                        <div class="comment__bottom">
+                            <div class="heart__icon heart__icon--comment">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <small class="count likes__count">0</small>
+                        </div>
+                    </div>
+                </div> -->
             </div>
 
         </section>

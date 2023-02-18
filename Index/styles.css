@@ -855,12 +855,11 @@ header ul h2:hover{
     display: flex;
 }
 .blogs-pic1{
-    background: url(images/aiony-haust-3TLl_97HNJo-unsplash.jpg);
+    /* background: url(images/aiony-haust-3TLl_97HNJo-unsplash.jpg); */
     height: 140px;
     width: 115px;
     border-radius: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
+    
 }
 .author1-name{
     color: #6d6969;
