@@ -224,4 +224,3 @@ const validateInputs = () => {
         return false;
     }
 };
-
