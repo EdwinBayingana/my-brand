@@ -94,7 +94,7 @@ const validateInputs = () => {
     }
 
     if (emailValue == "bayinganaedwin@gmail.com" && passwordValue == "foryoureyes") {
-        location.href = "../Admin-Panel/admin.html";
+        location.href = "../2-Admin-Panel%20/admin.html";
     } else {
         alert("Sorry, user not found!");
     }
