@@ -49,7 +49,7 @@ if (localStorage.getItem("blogsData") != null) {
 
 function registrationData(){
     blogsData.push({
-        id: Date.now() * Math.random(),                                                         //Latest update
+        id: Math.random(),                                                         //Latest update
         blogImage: imgUrl == undefined ? "images/logo for add-blog-image.jpeg" : imgUrl,
         title: title.value,
         author: author.value,
@@ -134,8 +134,7 @@ const getDataFromLocal = () =>{
                 // form.reset('');
                 // validateInputs();
                 closeModalBtn.click();
-                location.reload();
-                
+                location.reload();      
             }
         }
     }
