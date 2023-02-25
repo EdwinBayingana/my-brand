@@ -52,7 +52,9 @@ const commenterUsername = document.querySelector('#blog-username-input')
 const comment = document.querySelector('#blog-comment-input')
 const count = document.querySelector('.count')
 const commentsCount = document.querySelector('.comments__container')
-
+let blogsData = JSON.parse(localStorage.getItem("blogsData"));
+let index = JSON.parse(localStorage.getItem("id"));
+ 
 submitBtn.addEventListener('click', submitFeedback)
 
 feedbackArr = []
@@ -84,7 +86,7 @@ function submitFeedback(e){
         localStorage.setItem("Comment-Data", commentsString);
 
         // Clear inputs on submit
-        resetForm()
+        // resetForm()
         // Add feedback to list
         addFeedback(newFeedback)
     }
@@ -92,14 +94,6 @@ function submitFeedback(e){
     validateInputs();
     e.preventDefault();
 }
-
-
-
-function resetForm(){
-    commenterUsername.value = ''
-    comment.value = ''
-}
-
 
 
 function addFeedback(item){
@@ -111,22 +105,74 @@ function addFeedback(item){
     div.classList = 'comment__card'
     // Add id
     div.id = item.id
-    // Add html
-    div.innerHTML = 
-    `
-    <div class="pic center__display"> ${letter}
-    </div>
-    <div class="comment__info">
-        <small class="nickname">
-        ${item.userName}
-        </small>
-        <p class="comment">
-        ${item.userComment}
-        </p>
-        <div class="comment__bottom">
-    </div>
-    `
+
+    const commentData = {
+        username: commenterUsername.value,
+        comment: comment.value
+    }
+    
+    blogsData[index].comment.push(commentData);
+    localStorage.setItem("blogsData", JSON.stringify(blogsData));
+
     // insert feedback into the list
     commentsCount.insertAdjacentElement('beforeend', div);
+
+    location.reload();
+    // Reset the input fields after submiting
+    commenterUsername.value = ''
+    comment.value = ''
+    
 }
+ 
+    let comments = blogsData[index].comment;
+    
+
+    for(let i = 0; i < comments.length; i++){
+
+        // comment card CSS
+        let div = document.createElement('div')
+        div.classList = 'comment__card'
+
+        console.log(comments[i])
+        console.log(comments[i].username)
+        console.log(comments[i].comment)
+        // let div = document.createElement('div')
+        // let letter = comments[i].userName.charAt(0)
+        div.innerHTML = 
+        `
+            <div class="pic center__display"></div>
+            <div class="comment__info">
+                <small class="nickname">
+                ${comments[i].username}
+                </small>
+                <p class="comment">
+                ${comments[i].comment}
+                </p>
+                <div class="comment__bottom">
+            </div>
+        `
+        commentsCount.insertAdjacentElement('beforeend', div);
+    }
+   
+
+
+
+                                                                       // !To get the letter later
+
+//     `
+//     <div class="pic center__display"> ${letter}</div>
+//     <div class="comment__info">
+//         <small class="nickname">
+//         ${comments[i].userName}
+//         </small>
+//         <p class="comment">
+//         ${comments[i].userComment}
+//         </p>
+//         <div class="comment__bottom">
+//     </div>
+// `
+
+
+
+
 

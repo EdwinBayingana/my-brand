@@ -53,12 +53,14 @@ function registrationData(){
         blogImage: imgUrl == undefined ? "images/logo for add-blog-image.jpeg" : imgUrl,
         title: title.value,
         author: author.value,
-        body: body.value
+        body: body.value,
+        comment: []
     });
     console.log(blogsData);
     var blogsString = JSON.stringify(blogsData);
     localStorage.setItem("blogsData", blogsString);
 }
+
 
 
 // Pushing data from the localStorage to the t-body

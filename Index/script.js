@@ -43,7 +43,7 @@ const setSuccess = element => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
 
-    errorDisplay.innerText = '';                                               //..................👈🏽 Seek Inquiry on this line...............
+    errorDisplay.innerText = '';                                              
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
 };
