@@ -1,4 +1,21 @@
-                                                        // FORM VALIDATION on the SignUp page
+//Show Password Function
+function showPassword(){
+    var show = document.getElementById('password');
+    var show2 = document.getElementById('password2');
+
+    if (show.type == 'password') {
+        show.type = 'text'
+    } else {
+        show.type = 'password'
+    }
+
+    if (show2.type == 'password') {
+        show2.type = 'text'
+    } else {
+        show2.type = 'password'
+    }
+}
+//.................................................................FORM VALIDATION on the SignUp page....................................
 const form = document.querySelector('#form-2');
 const username = document.querySelector('#username');
 const email = document.querySelector('#email');
@@ -41,7 +58,8 @@ function addOfData(e) {
         // location.href = "../Admin-Panel/admin.html";
         location.reload();
     } else {
-        location.href = "../Index/index.html#contact-me-page";
+        // alert("User registered successfully!");
+        // location.href = "../Login/login.html";
     }
     
 }
@@ -52,7 +70,7 @@ function addOfData(e) {
 form.addEventListener('submit', e => {
     e.preventDefault();
 
-    validateInputs() && addOfData();
+    validateInputs() && addOfData(e);
 });
 
 const setError = (element, message) => {
@@ -108,10 +126,12 @@ const validateInputs = () => {
 
     if(password2Value === '') {
         setError(password2, 'Please confirm your password');
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords doesn't match");
+    } else if (password2Value != passwordValue) {
+        setError(password2, "Passwords don't match");
     } else {
         setSuccess(password2);
+        alert("User registered successfully!");
+        location.href = "../Login/login.html";
     }
 
     if (usernameValue && emailValue && passwordValue && password2Value) {

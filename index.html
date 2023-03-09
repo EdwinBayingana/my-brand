@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-signedin="true">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./Index/styles.css">
     
     <!-- Font Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
-    <script defer src="./script.js"></script>
+    <script defer src="./Index/script.js"></script>
+    <script defer src="./Index/render.js"></script>
 
     <title>My Brand</title>
 </head>
@@ -30,7 +31,10 @@
                 <a href="#blogs-page"><li class="blogs-nav">Blogs</li></a>
                 <a href="#contact-me-page"><li class="contact-me-nav">Contact Me</li></a>
                 <button class="login-button-home" type="button"></button>
-                <a href="../Login/login.html"><h2 class="login-button-text-home">LOGIN</h2></a>
+                <li>
+                    <a href="./Login/login.html"><h2 class="login-button-text-home visible">LOGIN</h2></a>
+                    <a href="../Login/logout.html"><h2 class="login-button-text-home hidden">LOGOUT</h2></a>
+                </li>
             </ul>
         </header>
                
@@ -69,7 +73,7 @@
                     exceptional digital experiences.</h5>
                 </div>
                 <div>
-                    <a href="Edwin's Resume.pdf" target="_blank"><div class="resume-button">Resume Preview<p class="download-icon"><i class="fa-solid fa-arrow-down-to-bracket"></i></p></div></a>
+                    <a href="https://drive.google.com/file/d/1UJG7n2v4HbsHiR-88u866liH0agBbpVN/view?usp=sharing" target="_blank"><div class="resume-button">Resume Preview<p class="download-icon"><i class="fa-solid fa-arrow-down-to-bracket"></i></p></div></a>
                    
                 </div>                         
             </div>
@@ -250,7 +254,7 @@
                 Available on Visual Studio <br> Marketplace, Package Control, Atom Package <br>manager, and npm.
             </div>
             <div class="my-work-next-text">
-                <a href="../My-Work2/my-work2.html">Next</a>
+                <a href="./My-Work2/my-work2.html">Next</a>
             </div>
         </section>
 
@@ -271,28 +275,11 @@
                 <p class="blogs-title">Blogs</p>
             </div>
                 <!-- Left section of blogs -->
-            <!-- Blog 1 -->
+                                                        <!-- Blog 1 -->
             <div class="blogs-top-section">
-                <div class="blogs-1">
-                    <div class="blogs-pic1"></div>
-                    <div class="author1-name">
-                        JANE DOE
-                        <a href="../Blogs1/blogs1.html">
-                            <div class="author1-blog-preview">Communication specialist in the public<br>and political
-                            sphere prolect manager of <br>sphere prolect manager of sphere <br>prolect manager of....
-                            </div>
-                        </a>
-                        <div id="below-blog-preview-text">
-                            <div id="read-more">Read more...</div>
-                            <div id="like-emoji">👍</div>
-                            <p id="likes-count-blogs-1">32</p>
-                            <div id="comments-emoji">💬</div>
-                            <p id="comments-count-blogs-1">28</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog 2 -->
-                <div class="blogs-2">
+                
+                                                        <!-- Blog 2 -->
+                <!-- <div class="blogs-2">
                     <div class="blogs-pic2"></div>
                     <div class="author2-name">
                         SMITH CARTER
@@ -307,11 +294,12 @@
                             <p id="comments-count-blogs-2">39</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
+            
             <div class="blogs-bottom-section">
                 <!-- Blog 3 -->
-                <div class="blogs-3">
+                <!-- <div class="blogs-3">
                     <div class="blogs-pic3"></div>
                     <div class="author3-name">
                         JOHN SMITH
@@ -321,14 +309,14 @@
                         <div id="below-blog-preview-text">
                             <div id="read-more">Read more...</div>
                             <div id="like-emoji">👍</div>
-                            <p id="likes-count-blogs-3">16</p>
+                            <p id="likes-count-blogs-3">0</p>
                             <div id="comments-emoji">💬</div>
-                            <p id="comments-count-blogs-3">33</p>
+                            <p id="comments-count-blogs-3">0</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Blog 4 -->
-                <div class="blogs-4">
+                <!-- <div class="blogs-4">
                     <div class="blogs-pic4"></div>
                     <div class="author4-name">
                         EMILY
@@ -338,12 +326,12 @@
                         <div id="below-blog-preview-text">
                             <div id="read-more">Read more...</div>
                             <div id="like-emoji">👍</div>
-                            <p id="likes-count-blogs-4">22</p>
+                            <p id="likes-count-blogs-4">0</p>
                             <div id="comments-emoji">💬</div>
-                            <p id="comments-count-blogs-4">56</p>
+                            <p id="comments-count-blogs-4">0</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </section>
@@ -416,9 +404,9 @@
         <!-- Footer Section -->
         <div class="footer">
             <div class="icons">
-                <a href="https://github.com/EdwinBayingana/" target="_blank"><img src="./Images/Github logo.png" class="github-logo" alt="github logo"></a>
-                <a href="https://gmail.com" target="_blank"><img src="./Images/gmail icon.png" class="gmail-logo" alt="gmail logo"></a>
-                <a href="https://www.linkedin.com/in/edwin-bayingana-44a846229" target="_blank"><img src="./Images/linkedIn logo.png" class="linkedIn-logo" alt="linkedIn logo"></a>
+                <a href="https://github.com/EdwinBayingana/" target="_blank"><img src="Images/Github logo.png" class="github-logo" alt="github logo"></a>
+                <a href="mailto:bayinganaedwin@gmail.com" target="_blank"><img src="Images/gmail icon.png" class="gmail-logo" alt="gmail logo"></a>
+                <a href="https://www.linkedin.com/in/edwin-bayingana-44a846229" target="_blank"><img src="Images/linkedIn logo.png" class="linkedIn-logo" alt="linkedIn logo"></a>
             </div>
             <div class="footer-text">© 2023 Copyright Edwin BAYINGANA</div>
         </div>

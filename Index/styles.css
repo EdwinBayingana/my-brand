@@ -1,3 +1,16 @@
+[data-signedin = "true"] .hidden {
+    display: none;
+}
+[data-signedin = "false"] .hidden {
+    display: block;
+}
+[data-signedin = "true"] .visible {
+    display: block;
+}
+[data-signedin = "false"] .visible {
+    display: none;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -842,12 +855,11 @@ header ul h2:hover{
     display: flex;
 }
 .blogs-pic1{
-    background: url(images/aiony-haust-3TLl_97HNJo-unsplash.jpg);
+    /* background: url(images/aiony-haust-3TLl_97HNJo-unsplash.jpg); */
     height: 140px;
     width: 115px;
     border-radius: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
+    
 }
 .author1-name{
     color: #6d6969;
@@ -1202,12 +1214,13 @@ header ul h2:hover{
     height: 60px;
     width: 60px;
     /* border: solid red; */
-    padding-top: 10px;
+    padding-top: 20px;
 }
 .footer-text{
     color:#fff;
     margin-left: 44%;
     font-size: 12px;
+    padding-top: 5px;
 }
 .github-logo{
     display: flex;
@@ -1228,8 +1241,8 @@ header ul h2:hover{
     display: flex;
     height: 40px;
     width: 40px;
-    /* border: solid purple; */
-    margin-left: 85%;
+    border: solid black;
+    margin-left: 86%;
     border-radius: 6px;
 }
 /* ...................................................External Files are below................................................................. */
@@ -1593,11 +1606,17 @@ header ul h2:hover{
         width: 300px;
     }
     .footer{
-        width: 550px;
+        width: 100%;
+    }
+    .footer .icons{
+        margin-right: 0px;
     }
     .footer-text{
         align-items: center;
-        margin-left: 30%;
+        margin-left: 200px;
+    }
+    .footer img{
+        margin-left: 120px;
     }
 }
 
@@ -1620,6 +1639,6 @@ header ul h2:hover{
 }
 .input-control .error{
     border-color: #ff3860;
-    font-size: 9px;
-    height: 3px;
+    font-size: 12px;
+    height: 10px;
 }
