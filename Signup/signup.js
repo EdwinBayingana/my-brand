@@ -55,7 +55,8 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   //   fetch(`${api}/api/register`, {
-  fetch('http://127.0.0.1:7000/api/register', {
+  fetch('https://majestic-melomakarona-d7b4f4.netlify.app//api/login', {
+    // fetch('http://127.0.0.1:7000/api/register', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

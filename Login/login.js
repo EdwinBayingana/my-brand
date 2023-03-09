@@ -13,7 +13,8 @@ form.addEventListener('submit', (e) => {
   const data = { email: emailValue, password: passwordValue };
 
   // use fetch method to interact with your login api endpoint
-  fetch('http://localhost:7000/api/login', {
+  //   fetch('http://localhost:7000/api/login', {
+  fetch('https://majestic-melomakarona-d7b4f4.netlify.app//api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
