@@ -13,8 +13,8 @@ form.addEventListener('submit', (e) => {
   const data = { email: emailValue, password: passwordValue };
 
   // use fetch method to interact with your login api endpoint
-  // fetch('http://localhost:7000/api/login', {
-  fetch('https://majestic-melomakarona-d7b4f4.netlify.app/api/login', {
+  fetch('http://localhost:7000/api/login', {
+    // fetch('https://majestic-melomakarona-d7b4f4.netlify.app/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,9 +28,9 @@ form.addEventListener('submit', (e) => {
         localStorage.setItem('token', resp.token);
         localStorage.setItem('logedIn', resp.data.email);
         //  console.log(resp.data.username)
-        // location.href = '../2-Admin-Panel%20/admin.html';
-        location.href =
-          'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
+        location.href = '../2-Admin-Panel%20/admin.html';
+        // location.href =
+        //   'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
       } else {
         console.log(resp.message);
         // alert(resp.message)
@@ -110,7 +110,6 @@ const validateInputs = () => {
     setError(password, 'Password must be at least 8 characters.');
   } else {
     setSuccess(password);
-    // console.log(location.href = "../Admin-Panel/admin.html");
     // location.href = '../index.html';
   }
 

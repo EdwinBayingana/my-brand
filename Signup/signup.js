@@ -7,29 +7,6 @@ const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const password2 = document.querySelector('#password2');
 
-// // Integrated Version
-// async function addOfData(username, email, password) {
-//   try {
-//     const response = await fetch('http://127.0.0.1:7000/api/register', {
-//       method: 'POST',
-//       headers: {
-//         'content-type': 'application/json',
-//       },
-//       body: JSON.stringify({ username, email, password }),
-//     });
-//     const data = await response.json().then((data) => {
-//       if (data.email) {
-//         // location.href = '';
-//       }
-//       if (data.success == false) {
-//         alert('There has been an error:' + data.message);
-//       }
-//     });
-//   } catch (error) {
-//     alert(error.message);
-//   }
-// }
-
 // OtherR-way
 form.addEventListener('submit', async (event) => {
   const username = document.querySelector('#username').value;
@@ -39,7 +16,7 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   // fetch(`${api}/api/register`, {
-  fetch('https://majestic-melomakarona-d7b4f4.netlify.app//api/register', {
+  fetch('https://repulsive-frog-jacket.cyclic.app/api/register', {
     // fetch('http://127.0.0.1:7000/api/register', {
     method: 'POST',
     headers: {
@@ -153,10 +130,9 @@ const validateInputs = () => {
   } else {
     setSuccess(password2);
     // alert('User registered successfully!');
-    // location.href = '../Login/login.html'; //!Worked at 8:20pm
-    // location.href = '../Login/login.html'
-    location.href =
-      'https://majestic-melomakarona-d7b4f4.netlify.app/api/login';
+    location.href = '../Login/login.html'; //!Worked at 8:20pm
+    // location.href =
+    //   'https://majestic-melomakarona-d7b4f4.netlify.app/login/login';
   }
 
   if (usernameValue && emailValue && passwordValue && password2Value) {
