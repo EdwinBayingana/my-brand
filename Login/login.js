@@ -13,8 +13,8 @@ form.addEventListener('submit', (e) => {
   const data = { email: emailValue, password: passwordValue };
 
   // use fetch method to interact with your login api endpoint
-  //   fetch('http://localhost:7000/api/login', {
-  fetch('https://majestic-melomakarona-d7b4f4.netlify.app//api/login', {
+  // fetch('http://localhost:7000/api/login', {
+  fetch('https://majestic-melomakarona-d7b4f4.netlify.app/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,52 +22,25 @@ form.addEventListener('submit', (e) => {
     body: JSON.stringify(data),
   })
     .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      alert(data.message);
-      location.href = '../index.html';
-      //   if (data.ok) {
-      //     // set our token in LS
-      //     // localStorage.setItem('authToken', data.token);
-      //     location.href = '../2-Admin-Panel/admin.html';
-      //   } else {
-      //     alert(data.message);
-      //   }
+    .then((resp) => {
+      console.log(resp.data.email);
+      if (resp.data) {
+        localStorage.setItem('token', resp.token);
+        localStorage.setItem('logedIn', resp.data.email);
+        //  console.log(resp.data.username)
+        // location.href = '../2-Admin-Panel%20/admin.html';
+        location.href =
+          'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
+      } else {
+        console.log(resp.message);
+        // alert(resp.message)
+      }
+      return resp;
     })
-    .catch((err) => alert(err));
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 });
-
-// const form = document.getElementById('form');
-// const email = document.getElementById('email');
-// const password = document.getElementById('password');
-
-// //Getting existing users from localStorage, otherwise set admin as the default user with id = 0.
-// const users = JSON.parse(localStorage.getItem("users")) ?? [{
-//     id: 0,
-//     username: "BayinganaEdwin",
-//     email: "bayinganaedwin@gmail.com",
-//     password: "foryoureyes"
-// }];
-
-// let isGenuine = localStorage.getItem("isGenuine", "true");
-
-// //Login function
-// function login(e){
-
-//     e.preventDefault();
-//     var email = document.getElementById('email').value;
-//     var password = document.getElementById('password').value;
-
-//     const user = users.find(user => user.email === email && user.password === password);
-//     localStorage.setItem("genuineUser", JSON.stringify(user));
-
-//     // if (user.id !== 0 && user.email !== "bayinganaedwin@gmail.com" && user.password !== "foryoureyes") {
-//     //     location.href = "../index.html";
-//     //     localStorage.setItem("signedin", user.email);
-//     // } else {
-//     //     location.href = "../Admin-Panel/admin.html";
-//     // }
-// }
 
 //Show Password Function
 function showPassword() {
@@ -79,11 +52,19 @@ function showPassword() {
   }
 }
 
+// function login(e) {
+//   e.preventDefault();
+//   var email = document.getElementById('email').value;
+//   var password = document.getElementById('password').value;
+
+//   signIn(email, password);
+// }
+
 // FORM VALIDATION on the Login page
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  //   validateInputs() && login(e);  //!remember to call login(e)
+  // validateInputs() && login(e);
   validateInputs();
 });
 
@@ -130,16 +111,17 @@ const validateInputs = () => {
   } else {
     setSuccess(password);
     // console.log(location.href = "../Admin-Panel/admin.html");
+    // location.href = '../index.html';
   }
 
-  //   if (
-  //     emailValue == 'bayinganaedwin@gmail.com' &&
-  //     passwordValue == 'foryoureyes'
-  //   ) {
-  //     location.href = '../2-Admin-Panel%20/admin.html';
-  //   } else {
-  //     alert('Sorry, user not found!');
-  //   }
+  if (
+    emailValue == 'bayinganaedwin@gmail.com' &&
+    passwordValue == 'foryoureyes'
+  ) {
+    location.href = '../2-Admin-Panel%20/admin.html';
+  } //else {
+  //   alert('Sorry, user not found!');
+  // }
 
   if (emailValue && passwordValue) {
     return true;
