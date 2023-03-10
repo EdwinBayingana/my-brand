@@ -42,52 +42,7 @@ saveBlogBtn.onclick = function (e) {
   closeModalBtn.click();
 };
 
-//!.......................................................................ViewBlogs_Start......................................................................
-// const blogsTable = document.querySelector('#table-data');
-
-// //? Now we connect and interact with our getUsers endpoint
-
-// // fetch('https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs');
-// fetch('http://127.0.0.1:7000/api/blogs/getAllBlogs')
-//   .then((response) => response.json())
-//   .then((blogs) => {
-//     console.log(blogs);
-//     blogs.data.forEach((blog) => {
-
-//       console.log(blog);
-//       const row = document.createElement('tr');
-//       const indexCell = document.createElement('td');
-//       const imageCell = document.createElement('td');
-//       const authorCell = document.createElement('td');
-//       const titleCell = document.createElement('td');
-//       const bodyCell = document.createElement('td');
-//       const actionCell = document.createElement('td');
-
-//       const deleteButton = document.createElement('button');
-
-//       //   //* Now we assign values to the created cells
-//       indexCell.textContent = 'Num1';
-//       imageCell.textContent = blog.imageUrl;
-//       authorCell.textContent = blog.author;
-//       titleCell.textContent = blog.title;
-//       bodyCell.textContent = blog.body;
-//       deleteButton.textContent = 'delete';
-
-//       row.appendChild(indexCell);
-//       row.appendChild(imageCell);
-//       row.appendChild(authorCell);
-//       row.appendChild(titleCell);
-//       row.appendChild(bodyCell);
-//       row.appendChild(actionCell);
-
-//       blogsTable.querySelector('#table-data').appendChild(row);
-//     });
-//   })
-//   .catch((err) => alert(err));
-// //   .catch((err) => console.log(err));
-//!...................................................................ViewBlogs_Finish......................................................................
-
-// ?...................................................................ViewBlogs_Start Beast......................................................................
+// ?...................................................................ViewBlogs `insertAdjustmentHTML` way..........................start...........
 const blogsTable = document.querySelector('#table-data');
 // const articles = document.querySelector("#t-body");
 
@@ -132,48 +87,65 @@ fetchBlogs()
       );
     });
   })
-  //!.............................................DELETE FUNCTIONALITY(not yet working).........................................................
+  //!.............................................DELETE FUNCTIONALITY(not yet working).................................................start........
   .then(() => handleDelete());
 
 function handleDelete() {
-  const deleteButtons = [
-    ...document.getElementsByClassName('delete-button-blogs'),
-  ];
-  console.log(deleteButtons);
-  deleteButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const deleteID = e.target.dataset; //!...................Troubleshoot here dataset.id?................................
-      console.log(deleteID);
-      //   deleteBlog(deleteID);
-    });
-  });
-}
+  //   const deleteButtons = [
+  //     ...document.getElementsByClassName('delete-button-blogs'),
+  //   ];
 
-async function deleteBlog(deleteID) {
-  try {
-    const response = await fetch(
-      `http://127.0.0.1:7000/api/blogs/deleteBlog/${deleteID}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `JWT ${localStorage.getItem('authToken')}`,
-        },
-      },
-    );
+  //*Deleting blogs from the t-body
 
-    const blogs = await response.json();
-    if (blogs.success == true) {
-      location.reload();
-    } else {
-      alert('Failed to delete blog');
-    }
-  } catch (error) {
-    console.log('Error deleting blog: ', error.message);
+  var deleteButtons = document.querySelectorAll('.del-btn');
+  for (var i = 0; i < deleteButtons.length; i++) {
+    deleteButtons[i].onclick = function () {
+      var tr = this.parentElement.parentElement;
+      var id = tr.getAttribute('index');
+      blogsData.splice(id, 1);
+      localStorage.setItem('blogsData', JSON.stringify(blogsData));
+      var ans = confirm('Are you sure you want to delete this blog?');
+      if (ans == true) {
+        tr.remove();
+      }
+    };
   }
+  //   console.log(deleteButtons);
+  //   deleteButtons.forEach((button) => {
+  //     button.addEventListener('click', (e) => {
+  //       const deleteID = e.target.dataset; //!...................Troubleshoot here dataset.id?................................
+  //       console.log(deleteID);
+  //       //   deleteBlog(deleteID);
+  //     });
+  //   });
 }
 
-// ?...................................................................ViewBlogs_Finish......................................................................
+// async function deleteBlog(deleteID) {
+//   try {
+//     const response = await fetch(
+//       `http://127.0.0.1:7000/api/blogs/deleteBlog/${deleteID}`,
+//       {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           Authorization: `JWT ${localStorage.getItem('authToken')}`,
+//         },
+//       },
+//     );
+
+//     const blogs = await response.json();
+//     if (blogs.success == true) {
+//       location.reload();
+//     } else {
+//       alert('Failed to delete blog');
+//     }
+//   } catch (error) {
+//     console.log('Error deleting blog: ', error.message);
+//   }
+// }
+//!.............................................DELETE FUNCTIONALITY(not yet working)...............................................end.............
+
+// ?...................................................................ViewBlogs_Finish...................................................end.......
 
 // // Save Blog Button Functionality
 // saveBlogBtn.onclick = function(e){
@@ -203,41 +175,20 @@ async function deleteBlog(deleteID) {
 //     localStorage.setItem("blogsData", blogsString);
 // }
 
-// // Pushing data from the localStorage to the t-body
-// var tableData = document.querySelector('#table-data')
-// const getDataFromLocal = () =>{
-//     tableData.innerHTML = "";
-//     blogsData.forEach((data,index)=>{
-//         // console.log(index)
-//         tableData.innerHTML += `
-//             <tr index='${index}'>
-//                 <td>${index+1}</td>
-//                 <td><img src="${data.blogImage}" width="50" height="50"></td>
-//                 <td>${data.author}</td>
-//                 <td>${data.title}</td>
-//                 <td>${data.body}</td>
-//                 <td>
-//                     <button class="edit-button-blogs edit-btn">Edit</button>
-//                     <button class="delete-button-blogs del-btn">Delete</button>
-//                 </td>
-//             </tr>
-//         `;
-//     })
-
-//     //Deleting blogs from the t-body
-//     var deleteButtons = document.querySelectorAll(".del-btn");
-//         for(var i = 0; i < deleteButtons.length; i++){
-//             deleteButtons[i].onclick = function(){
-//                 var tr = this.parentElement.parentElement;
-//                 var id = tr.getAttribute("index");
-//                 blogsData.splice(id,1);
-//                 localStorage.setItem("blogsData", JSON.stringify(blogsData));
-//                 var ans = confirm("Are you sure you want to delete this blog?");
-//                 if (ans == true) {
-//                     tr.remove();
-//                 }
-//             }
-//         }
+// //Deleting blogs from the t-body
+// var deleteButtons = document.querySelectorAll('.del-btn');
+// for (var i = 0; i < deleteButtons.length; i++) {
+//   deleteButtons[i].onclick = function () {
+//     var tr = this.parentElement.parentElement;
+//     var id = tr.getAttribute('index');
+//     blogsData.splice(id, 1);
+//     localStorage.setItem('blogsData', JSON.stringify(blogsData));
+//     var ans = confirm('Are you sure you want to delete this blog?');
+//     if (ans == true) {
+//       tr.remove();
+//     }
+//   };
+// }
 
 //     //Edit || Update your standby blog
 
