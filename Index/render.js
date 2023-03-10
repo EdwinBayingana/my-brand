@@ -4,8 +4,8 @@ var i = 0;
 const fetchBlogs = async () => {
   try {
     const response = await fetch(
-      // 'http://127.0.0.1:7000/api/blogs/getAllBlogs',
-      'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
+      'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
       {
         method: 'GET',
       },

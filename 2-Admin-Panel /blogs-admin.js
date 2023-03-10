@@ -50,8 +50,8 @@ const blogsTable = document.querySelector('#table-data');
 const fetchBlogs = async () => {
   try {
     const response = await fetch(
-      // 'http://127.0.0.1:7000/api/blogs/getAllBlogs',
-      'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
+      'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
       {
         method: 'GET',
       },
@@ -162,18 +162,17 @@ saveBlogBtn.onclick = function (e) {
 
 const registrationData = async (title, author, body) => {
   try {
-    const response = await fetch(
-      'https://repulsive-frog-jacket.cyclic.app/api/blogs/newBlog',
-      {
-        // const response = await fetch('http://127.0.0.1:7000/api/blogs/newBlog', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-          // Authorization: `JWT ${localStorage.getItem('authToken')}`,
-        },
-        body: JSON.stringify({ title, author, body }),
+    // const response = await fetch(
+    //   'https://repulsive-frog-jacket.cyclic.app/api/blogs/newBlog',
+    //   {
+    const response = await fetch('http://127.0.0.1:7000/api/blogs/newBlog', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        // Authorization: `JWT ${localStorage.getItem('authToken')}`,
       },
-    );
+      body: JSON.stringify({ title, author, body }),
+    });
     const data = await response.json();
     // console.log(data);
     // if (data) {
