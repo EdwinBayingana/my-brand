@@ -13,6 +13,7 @@ var title = document.getElementById('titleInput');
 var author = document.getElementById('authorInput');
 var body = document.getElementById('bodyTextarea');
 var imgUrl;
+var imageUrl;
 
 var addBlogBtn = document.querySelector('#the-add-blog-button');
 var modal = document.querySelector('.modal');
@@ -49,7 +50,8 @@ const blogsTable = document.querySelector('#table-data');
 const fetchBlogs = async () => {
   try {
     const response = await fetch(
-      'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      // 'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
       {
         method: 'GET',
       },
@@ -87,7 +89,8 @@ fetchBlogs()
       );
     });
   })
-  //!.............................................DELETE FUNCTIONALITY(not yet working).................................................start........
+
+  //!...............................DELETE FUNCTIONALITY(not yet working).......................start.............
   .then(() => handleDelete());
 
 function handleDelete() {
@@ -143,19 +146,45 @@ function handleDelete() {
 //     console.log('Error deleting blog: ', error.message);
 //   }
 // }
-//!.............................................DELETE FUNCTIONALITY(not yet working)...............................................end.............
+//!...............................DELETE FUNCTIONALITY(not yet working).......................end.............
 
 // ?...................................................................ViewBlogs_Finish...................................................end.......
 
-// // Save Blog Button Functionality
-// saveBlogBtn.onclick = function(e){
-//     e.preventDefault();
-//     registrationData();
-//     getDataFromLocal();
-//     form.reset('');
-//     closeModalBtn.click();
-// }
+// ?...................................................................CreateBlogs...................................................start.......
+// Save Blog Button Functionality
+saveBlogBtn.onclick = function (e) {
+  e.preventDefault();
+  registrationData(title, author, body);
+  //   getDataFromLocal();
+  form.reset('');
+  //   closeModalBtn.click();
+};
 
+const registrationData = async (title, author, body) => {
+  try {
+    const response = await fetch(
+      'https://repulsive-frog-jacket.cyclic.app/api/blogs/newBlog',
+      {
+        // const response = await fetch('http://127.0.0.1:7000/api/blogs/newBlog', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          // Authorization: `JWT ${localStorage.getItem('authToken')}`,
+        },
+        body: JSON.stringify({ title, author, body }),
+      },
+    );
+    const data = await response.json();
+    // console.log(data);
+    // if (data) {
+    //   location.reload();
+    // } else {
+    //   alert('Error creating blog');
+    // }
+  } catch (error) {
+    console.log('Error creating blog:', error.message);
+  }
+};
 // // Storing Blogs in the localStorage
 // if (localStorage.getItem("blogsData") != null) {
 //     blogsData = JSON.parse(localStorage.getItem("blogsData"));
@@ -174,6 +203,23 @@ function handleDelete() {
 //     var blogsString = JSON.stringify(blogsData);
 //     localStorage.setItem("blogsData", blogsString);
 // }
+
+uploadImage.onchange = function () {
+  if (uploadImage.files[0].size < 5000000) {
+    //5000000 ~ 5mb (or 5000000bytes)
+    var fReader = new FileReader();
+    fReader.onload = function (e) {
+      imgUrl = e.target.result;
+      blogImage.src = imgUrl;
+      // console.log(imgUrl);
+    };
+    fReader.readAsDataURL(uploadImage.files[0]);
+  } else {
+    alert('The File size is too big');
+  }
+};
+
+// ?...................................................................CreateBlogs...................................................end.......
 
 // //Deleting blogs from the t-body
 // var deleteButtons = document.querySelectorAll('.del-btn');
@@ -235,33 +281,30 @@ function handleDelete() {
 
 // //Image Accessing and Processing
 
-// uploadImage.onchange = function(){
-//     if (uploadImage.files[0].size < 5000000) { //5000000 ~ 5mb (or 5000000bytes)
-//         var fReader = new FileReader();
-//         fReader.onload = function(e){
-//             imgUrl = e.target.result;
-//             blogImage.src = imgUrl;
-//             // console.log(imgUrl);
-//         }
-//         fReader.readAsDataURL(uploadImage.files[0]);
-//     } else {
-//         alert("The File size is too big");
-//     }
-// }
-
 //............................................................Form Validation Add-Blog Form..............................................................
-// var blogsData = [];
-// var saveBlogBtn = document.querySelector('#add-blog-form-save-button');
-// var form = document.getElementById('add-blog-form');
-// var blogId = document.getElementById('blogId');
-// var title = document.getElementById('titleInput');
-// var author = document.getElementById('authorInput');
-// var body = document.getElementById('bodyTextarea');
+var blogsData = [];
+var saveBlogBtn = document.querySelector('#add-blog-form-save-button');
+var form = document.getElementById('add-blog-form');
+var blogId = document.getElementById('blogId');
+var title = document.getElementById('titleInput');
+var author = document.getElementById('authorInput');
+var body = document.getElementById('bodyTextarea');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  if (validateInputs() == true) {
+    // const imageUrl = blogImage.src;
+    const imageUrl = imgUrl;
+    const author = form.author.value;
+    const title = form.title.value;
+    const body = form.body.value;
+    console.log(imageUrl, author, title, body);
+    // createArticle(cover, title, content);
+    // clearForm();
+    // window.location.href = 'index.html';
+  }
 
-  validateInputs();
+  //   validateInputs();
 });
 
 const setError = (element, message) => {

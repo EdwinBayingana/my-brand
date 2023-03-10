@@ -18,9 +18,8 @@ form.addEventListener('submit', async (event) => {
   //   const password2 = document.querySelector('#password2').value;
   event.preventDefault();
 
-  // fetch(`${api}/api/register`, {
-  //   fetch('https://repulsive-frog-jacket.cyclic.app/api/register', {
-  fetch('http://127.0.0.1:7000/api/messages', {
+  fetch('https://repulsive-frog-jacket.cyclic.app/api/messages', {
+    // fetch('http://127.0.0.1:7000/api/messages', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',

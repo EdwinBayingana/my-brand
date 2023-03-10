@@ -1,80 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+      rel="stylesheet"
+    />
     <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/3e81f8aed4.css" crossorigin="anonymous"> -->
 
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin.css" />
     <title>Dashboard - Admin Panel</title>
-</head>
-<body>
-        <div class="left-side" id="dashboard-home">
-            <a href="../index.html"><div class="zed-nav">zed</div></a>
-            <a href="#dashboard-home"><div class="dashboard-admin"><img class="left-side-icons" src="./images/dashboard analytics icon.png" alt="">
-                Dashboard</div></a>
-            <a href="./blogs-admin.html"><div class="blogs-admin"><img class="left-side-icons" src="./images/blogs icon.png" alt="blogs icon"> Blogs</div></a>
-            <a href="./users-admin.html"><div class="users-admin"><img class="left-side-icons" src="./images/users logo.png" alt=""> Users</div></a>
+  </head>
+  <body>
+    <div class="left-side" id="dashboard-home">
+      <a href="../index.html"><div class="zed-nav">zed</div></a>
+      <a href="#dashboard-home"
+        ><div class="dashboard-admin">
+          <img
+            class="left-side-icons"
+            src="./images/dashboard analytics icon.png"
+            alt=""
+          />
+          Dashboard
+        </div></a
+      >
+      <a href="./blogs-admin.html"
+        ><div class="blogs-admin">
+          <img
+            class="left-side-icons"
+            src="./images/blogs icon.png"
+            alt="blogs icon"
+          />
+          Blogs
+        </div></a
+      >
+      <a href="./users-admin.html"
+        ><div class="users-admin">
+          <img class="left-side-icons" src="./images/users logo.png" alt="" />
+          Users
+        </div></a
+      >
+    </div>
+    <div class="right-side">
+      <header>
+        <div class="welcome-text">WELCOME ADMIN</div>
+        <a href="../Login/login.html"><div class="logout-admin">Logout</div></a>
+      </header>
+      <div id="panel-page-title">
+        <div class="dashboard-icon">
+          <img
+            src="./images/dashboard analytics icon.png"
+            alt="dashboard analytics icon"
+          />
         </div>
-        <div class="right-side">
-            <header>
-                <div class="welcome-text">WELCOME ADMIN</div>
-                <a href="../Login/login.html"><div class="logout-admin">Logout</div></a>
-            </header>
-            <div id="panel-page-title">
-                <div class="dashboard-icon"><img src="./images/dashboard analytics icon.png" alt="dashboard analytics icon"></div>
-                Dashboard Analytics
-            </div>
-            <div class="analytics-section">
-                <!-- Total Likes Container -->
-                <div id="analytics-container">
-                    <div class="analytics-icons"><p>👍</p></div> <!-- Like icon -->
-                    <div id="analytics-container-text">Total Likes</div>
-                    <div id="analytics-container-numbers">10,678</div>
-                </div>
-                <!-- Total Comments Container-->
-                <div id="analytics-container">
-                    <div class="analytics-icons"><p>💬</p></div> <!-- Comment icon -->
-                    <div id="analytics-container-text">Comments</div>
-                    <div id="analytics-container-numbers">5,867</div>
-                </div>
-                <!-- Total Blogs Container -->
-                <div id="analytics-container">
-                    <div class="analytics-icons"><p>📝</p></div> <!-- Blogs icon -->
-                    <div id="analytics-container-text">Blogs</div>
-                    <div id="analytics-container-numbers">1,064</div>
-                </div>
-            </div>
-            <div id="panel-page-title">
-                <div class="dashboard-icon"><img src="./images/clock icon.png" alt=""></div>
-                Recent Activity
-            </div>
-            <div class="recent-activity-table">
-                <!-- Recent activity Table Title -->
-                <div class="recent-activity-table-title" class="recent-activity-table-title">
-                    <div class="recent-activity-table-title-name">Name</div>
-                    <div class="recent-activity-table-title-email">Email</div>
-                    <!-- <div class="recent-activity-table-title-joined">Joined</div> -->
-                    <div class="recent-activity-table-title-status">Status</div>
-                </div>
-                <div class="recent-activity-table-title1">
-                    <div class="recent-activity-table-title-name">Jane Doe</div>
-                    <div class="recent-activity-table-title-email">janedoe@gmail.com</div>
-                    <!-- <div class="recent-activity-table-title-joined">2023-23-01</div> -->
-                    <div class="recent-activity-table-title-status">Liked</div>
-                </div>
-                <div class="recent-activity-table-title1">
-                    <div class="recent-activity-table-title-name">Smith Carter</div>
-                    <div class="recent-activity-table-title-email">smithc@gmail.com</div>
-                    <!-- <div class="recent-activity-table-title-joined">2023-14-03</div> -->
-                    <div class="recent-activity-table-title-status">Commented</div>
-                </div>
-                
-            </div>
+        Dashboard Analytics
+      </div>
+      <div class="analytics-section">
+        <!-- Total Likes Container -->
+        <div id="analytics-container">
+          <div class="analytics-icons"><p>👍</p></div>
+          <!-- Like icon -->
+          <div id="analytics-container-text">Total Likes</div>
+          <div id="analytics-container-numbers">10,678</div>
         </div>
-</body>
+        <!-- Total Comments Container-->
+        <div id="analytics-container">
+          <div class="analytics-icons"><p>💬</p></div>
+          <!-- Comment icon -->
+          <div id="analytics-container-text">Comments</div>
+          <div id="analytics-container-numbers">5,867</div>
+        </div>
+        <!-- Total Blogs Container -->
+        <div id="analytics-container">
+          <div class="analytics-icons"><p>📝</p></div>
+          <!-- Blogs icon -->
+          <div id="analytics-container-text">Blogs</div>
+          <div id="analytics-container-numbers">1,064</div>
+        </div>
+      </div>
+      <div id="panel-page-title">
+        <!-- <div class="dashboard-icon">
+          <img src="./images/clock icon.png" alt="" />
+        </div>
+        Recent Activity
+      </div>
+      <div class="recent-activity-table">
+        <div
+          class="recent-activity-table-title"
+          class="recent-activity-table-title"
+        >
+          <div class="recent-activity-table-title-name">Name</div>
+          <div class="recent-activity-table-title-email">Email</div>
+          <div class="recent-activity-table-title-status">Status</div>
+        </div>
+        <div class="recent-activity-table-title1">
+          <div class="recent-activity-table-title-name">Jane Doe</div>
+          <div class="recent-activity-table-title-email">janedoe@gmail.com</div>
+          <div class="recent-activity-table-title-status">Liked</div>
+        </div>
+        <div class="recent-activity-table-title1">
+          <div class="recent-activity-table-title-name">Smith Carter</div>
+          <div class="recent-activity-table-title-email">smithc@gmail.com</div>
+          <div class="recent-activity-table-title-status">Commented</div>
+        </div>
+      </div> -->
+    </div>
+  </body>
 </html>

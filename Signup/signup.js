@@ -130,9 +130,9 @@ const validateInputs = () => {
   } else {
     setSuccess(password2);
     // alert('User registered successfully!');
-    location.href = '../Login/login.html'; //!Worked at 8:20pm
-    // location.href =
-    //   'https://majestic-melomakarona-d7b4f4.netlify.app/login/login';
+    //location.href = '../Login/login.html'; //!Worked at 8:20pm
+    location.href =
+      'https://majestic-melomakarona-d7b4f4.netlify.app/login/login';
   }
 
   if (usernameValue && emailValue && passwordValue && password2Value) {
