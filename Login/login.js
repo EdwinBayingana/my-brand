@@ -114,12 +114,12 @@ const validateInputs = () => {
   }
 
   if (
-    emailValue == 'bayinganaedwin@gmail.com' &&
+    // emailValue == 'bayinganaedwin@gmail.com' &&
     passwordValue == 'foryoureyes'
   ) {
-    location.href = '../2-Admin-Panel%20/admin.html'; //!............................................................................
-    // location.href =
-    //   'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
+    //location.href = '../2-Admin-Panel%20/admin.html'; //!............................................................................
+    location.href =
+      'https://majestic-melomakarona-d7b4f4.netlify.app/2-admin-panel%20/blogs-admin.html';
   } //else {
   //   alert('Sorry, user not found!');
   // }
@@ -129,5 +129,6 @@ const validateInputs = () => {
     // console.log(location.href = "../Admin-Panel/admin.html");
   } else {
     return false;
+    // return false;
   }
 };
