@@ -28,9 +28,12 @@ const setSuccess = (element) => {
 
 const validateInputs = () => {
   const commentValue = comment.value.trim();
+  const commenterNameValue = commenterUsername.value.trim();
 
   if (commentValue === '') {
     setError(commentInput, 'A comment is required');
+  } else if (commenterNameValue === '') {
+    setError(commentInput, 'A name is required');
   } else {
     setSuccess(commentInput);
   }
@@ -43,6 +46,8 @@ const validateInputs = () => {
   }
 };
 
+// ?.............................................
+
 //..................................................................Comment Functionality..................................................................
 
 // const userName = document.querySelector('#user')
@@ -51,75 +56,128 @@ const commenterUsername = document.querySelector('#blog-username-input');
 const comment = document.querySelector('#blog-comment-input');
 const count = document.querySelector('.count');
 const commentsCount = document.querySelector('.comments__container');
-let blogsData = JSON.parse(localStorage.getItem('blogsData'));
-let index = JSON.parse(localStorage.getItem('id'));
+// let blogsData = JSON.parse(localStorage.getItem('blogsData'));
+// let index = JSON.parse(localStorage.getItem('id'));
+
+// submitBtn.addEventListener('click', submitFeedback);
+
+// feedbackArr = [];
+let __id = localStorage.getItem('blogId');
+
+function submitFeedback(e) {
+  // validateInputs();
+  // e.preventDefault();
+  form.addEventListener('submit', async (event) => {
+    fetch(`http://127.0.0.1:7000/api/comment/${__id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        userName: commenterUsername.value,
+        comment: comment.value,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((resp) => {
+        console.log('Comment added successfully');
+        // console.log(resp.data.comments);
+        let comments = resp.data.comments;
+        console.log(comments);
+        for (let i = 0; i < comments.length; i++) {
+          // comment card CSS
+          let div = document.createElement('div');
+          div.classList = 'comment__card';
+
+          // console.log(comments[i]);
+          // console.log(comments[i].name);
+          // console.log(comments[i].comment);
+          // let div = document.createElement('div')
+          let theCommenterName = comments[i].userName;
+          // let firstLetter = theCommenterName.split('', 1); //!......................................................................
+          // let firstLetter = theCommenterName.charAt(0);
+          // console.log(firstLetter);
+          div.innerHTML = `
+                  <div class="pic center__display">${i + 1}</div>
+                  <div class="comment__info">
+                      <small class="nickname">
+                      ${comments[i].name}
+                      </small>
+                      <p class="comment">
+                      ${comments[i].comment}
+                      </p>
+                      <div class="comment__bottom">
+                  </div>
+              `;
+          commentsCount.insertAdjacentElement('beforeend', div);
+        }
+      });
+  });
+}
 
 submitBtn.addEventListener('click', submitFeedback);
 
-feedbackArr = [];
-let likesCount = 0;
+// // Storing comments in the localStorage
+// if (localStorage.getItem('newFeedback') != null) {
+//   newFeedback = JSON.parse(localStorage.getItem('newFeedback'));
+// }
 
-// Storing comments in the localStorage
-if (localStorage.getItem('newFeedback') != null) {
-  newFeedback = JSON.parse(localStorage.getItem('newFeedback'));
-}
+// function submitFeedback(e) {
+//   const userForm = commenterUsername.value;
+//   const commentForm = comment.value;
 
-function submitFeedback(e) {
-  // Get the Username
-  const userForm = commenterUsername.value;
-  // Get user comment or feedback
-  const commentForm = comment.value;
-  // if Inputs are not empty
-  if (userForm && commentForm !== '') {
-    newFeedback = {
-      id: Math.floor(Math.random() * 1000 + 1),
-      userName: userForm,
-      userComment: commentForm,
-    };
+//   if (userForm && commentForm !== '') {
+//     newFeedback = {
+//       id: Math.floor(Math.random() * 1000 + 1),
+//       userName: userForm,
+//       userComment: commentForm,
+//     };
 
-    // Add new Feedback to our empty array
-    feedbackArr.push(newFeedback);
-    // console.log(feedbackArr);
+//     // Add new Feedback to our empty array
+//     feedbackArr.push(newFeedback);
+//     // console.log(feedbackArr);
 
-    var commentsString = JSON.stringify(feedbackArr);
-    localStorage.setItem('Comment-Data', commentsString);
+//     var commentsString = JSON.stringify(feedbackArr);
+//     localStorage.setItem('Comment-Data', commentsString);
 
-    // Clear inputs on submit
-    // resetForm()
-    // Add feedback to list
-    addFeedback(newFeedback);
-  }
+//     // Clear inputs on submit
+//     // resetForm()
+//     // Add feedback to list
+//     addFeedback(newFeedback);
+//   }
 
-  validateInputs();
-  e.preventDefault();
-}
+//   validateInputs();
+//   e.preventDefault();
+// }
 
-function addFeedback(item) {
-  // Select First letter of the username
-  const letter = item.userName.charAt(0);
-  // Create a new div
-  const div = document.createElement('div');
-  // Add a class
-  div.classList = 'comment__card';
-  // Add id
-  div.id = item.id;
+// function addFeedback(item) {
+//   // Select First letter of the username
+//   const letter = item.userName.charAt(0);
+//   // Create a new div
+//   const div = document.createElement('div');
+//   // Add a class
+//   div.classList = 'comment__card';
+//   // Add id
+//   div.id = item.id;
 
-  const commentData = {
-    username: commenterUsername.value,
-    comment: comment.value,
-  };
+//   const commentData = {
+//     username: commenterUsername.value,
+//     comment: comment.value,
+//   };
 
-  blogsData[index].comment.push(commentData);
-  localStorage.setItem('blogsData', JSON.stringify(blogsData));
+//   blogsData[index].comment.push(commentData);
+//   localStorage.setItem('blogsData', JSON.stringify(blogsData));
 
-  // insert feedback into the list
-  commentsCount.insertAdjacentElement('beforeend', div);
+//   // insert feedback into the list
+//   commentsCount.insertAdjacentElement('beforeend', div);
 
-  location.reload();
-  // Reset the input fields after submiting
-  commenterUsername.value = '';
-  comment.value = '';
-}
+//   location.reload();
+//   // Reset the input fields after submiting
+//   commenterUsername.value = '';
+//   comment.value = '';
+// }
 
 // let comments = blogsData[index].comment;
 
@@ -147,18 +205,3 @@ function addFeedback(item) {
 //         `;
 //   commentsCount.insertAdjacentElement('beforeend', div);
 // }
-
-// !To get the letter later
-
-//     `
-//     <div class="pic center__display"> ${letter}</div>
-//     <div class="comment__info">
-//         <small class="nickname">
-//         ${comments[i].userName}
-//         </small>
-//         <p class="comment">
-//         ${comments[i].userComment}
-//         </p>
-//         <div class="comment__bottom">
-//     </div>
-// `

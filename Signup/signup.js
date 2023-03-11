@@ -12,7 +12,7 @@ form.addEventListener('submit', async (event) => {
   const username = document.querySelector('#username').value;
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
-  //   const password2 = document.querySelector('#password2').value;
+  const password2 = document.querySelector('#password2').value;
   event.preventDefault();
 
   // fetch(`${api}/api/register`, {
@@ -22,7 +22,12 @@ form.addEventListener('submit', async (event) => {
     headers: {
       'content-type': 'application/json',
     },
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({
+      email,
+      username,
+      password,
+      confirmPassword: password2,
+    }),
   })
     .then((response) => {
       return response.json();
@@ -130,14 +135,17 @@ const validateInputs = () => {
   } else {
     setSuccess(password2);
     // alert('User registered successfully!');
-    //location.href = '../Login/login.html'; //!Worked at 8:20pm
     location.href =
-      'https://majestic-melomakarona-d7b4f4.netlify.app/login/login';
+      'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/Login/login.html';
+    //location.href = '../Login/login.html'; //!Worked at 8:20pm
+    // location.href =
+    //   'https://majestic-melomakarona-d7b4f4.netlify.app/login/login';
   }
 
   if (usernameValue && emailValue && passwordValue && password2Value) {
     return true;
-    // location.href = '../Login/login.html';
+    // location.href =
+    //   'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/Login/login.html';
   } else {
     return false;
   }

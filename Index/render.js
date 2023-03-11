@@ -27,7 +27,7 @@ fetchBlogs().then((res) => {
                     <img src="${item.imageUrl}" class="blogs-pic1"></img>
                     <div class="author1-name">
                         ${item.author}
-                        <a href="" id="${res.data[index]._id}" class="read-more-render">
+                        <a href="#" id="${res.data[index]._id}" class="read-more-render">
                             <div class="author1-blog-preview">${item.body}</div>
                             <div id="below-blog-preview-text">
                             <div id="read-more">Read more...</div>
@@ -48,15 +48,14 @@ fetchBlogs().then((res) => {
     readMoreRender[i].addEventListener('click', () => {
       // readMoreRender[i]
       var id = readMoreRender[i].getAttribute('id');
-      // console.log('The id is: ' + id);
-      localStorage.setItem('blogId', res.data[i]._id);
+
+      localStorage.setItem('blogId', id); //!...................... Set the id into the url........................................
+      // alert('Blog has been clicked on');
       // location.href =
       //   'https://majestic-melomakarona-d7b4f4.netlify.app/blogs1/blogs1';
-      // location.href =
-      //   'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/Blogs1/blogs1.html';
-      // console.log(id);
+      location.href =
+        'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/Blogs1/blogs1.html';
 
-      // alert("Yessir!");
       console.log('The i is: ' + i);
     });
   }
@@ -64,17 +63,3 @@ fetchBlogs().then((res) => {
 // !..............................................................................................................................................
 
 var readMoreRender = document.querySelectorAll('.read-more-render');
-// console.log(readMoreRender.length / 2);
-// console.log(blogsDetails);
-
-// for (let i = 0; i < readMoreRender.length; i++) {
-//   readMoreRender[i].addEventListener('click', () => {
-//     // readMoreRender[i]
-//     var id = readMoreRender[i].getAttribute('id');
-//     // console.log('The id is: ' + id);
-//     localStorage.setItem('blogId', id);
-
-//     // alert("Yessir!");
-//     console.log('The i is: ' + i);
-//   });
-// }

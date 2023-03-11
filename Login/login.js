@@ -13,8 +13,8 @@ form.addEventListener('submit', (e) => {
   const data = { email: emailValue, password: passwordValue };
 
   // use fetch method to interact with your login api endpoint
-  // fetch('http://localhost:7000/api/login', {
-  fetch('https://repulsive-frog-jacket.cyclic.app/api/login', {
+  fetch('http://localhost:7000/api/login', {
+    // fetch('https://repulsive-frog-jacket.cyclic.app/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -27,10 +27,10 @@ form.addEventListener('submit', (e) => {
       if (resp.data) {
         localStorage.setItem('token', resp.token);
         localStorage.setItem('logedIn', resp.data.email);
-        //  console.log(resp.data.username)
-        // location.href = '../2-Admin-Panel%20/admin.html';
         location.href =
-          'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
+          'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/2-Admin-Panel%20/blogs-admin.html';
+        // location.href =
+        //   'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
       } else {
         console.log(resp.message);
         // alert(resp.message)
