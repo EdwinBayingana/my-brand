@@ -17,7 +17,7 @@ const fetchBlog = async () => {
 };
 
 fetchBlog().then((res) => {
-  console.log(res);
+  // console.log(res.data);
   // res.forEach((item, index) => {
   blogSection.insertAdjacentHTML(
     'afterbegin',

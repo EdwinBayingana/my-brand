@@ -38,12 +38,11 @@ closeModalBtn.onclick = function () {
 saveBlogBtn.onclick = function (e) {
   e.preventDefault();
   //   registrationData();
-  //   getDataFromLocal();
   form.reset('');
   closeModalBtn.click();
 };
 
-// ?...................................................................ViewBlogs `insertAdjustmentHTML` way..........................start...........
+// ?...................................................................ViewBlogs........................................................................
 const blogsTable = document.querySelector('#table-data');
 // const articles = document.querySelector("#t-body");
 
@@ -79,8 +78,12 @@ fetchBlogs()
       <td>${item.title}</td>
       <td>${item.body}</td>
       <td>
-            <button class="edit-button-blogs edit-btn">Edit</button>
-            <button class="delete-button-blogs del-btn">Delete</button>
+            <button class="edit-button-blogs edit-btn" onclick="updateUser('${
+              item._id
+            }')">Edit</button>
+            <button class="delete-button-blogs del-btn" onclick="deleteBlog('${
+              item._id
+            }')">Delete</button>
         </td>
 
       </tr>
@@ -89,68 +92,97 @@ fetchBlogs()
       );
     });
   })
+  .catch((err) => {
+    alert(err);
+  });
 
-  //!...............................DELETE FUNCTIONALITY(not yet working).......................start.............
-  .then(() => handleDelete());
-
-function handleDelete() {
-  //   const deleteButtons = [
-  //     ...document.getElementsByClassName('delete-button-blogs'),
-  //   ];
-
-  //*Deleting blogs from the t-body
-
-  var deleteButtons = document.querySelectorAll('.del-btn');
-  for (var i = 0; i < deleteButtons.length; i++) {
-    deleteButtons[i].onclick = function () {
-      var tr = this.parentElement.parentElement;
-      var id = tr.getAttribute('index');
-      blogsData.splice(id, 1);
-      localStorage.setItem('blogsData', JSON.stringify(blogsData));
-      var ans = confirm('Are you sure you want to delete this blog?');
-      if (ans == true) {
-        tr.remove();
-      }
-    };
+//?...............................................................Delete Blogs...................................................start.............
+function deleteBlog(id) {
+  var ans = confirm('Are you sure you want to delete this blog?');
+  if (ans == true) {
+    //*Deleting blogs from the t-body
+    fetch(`http://127.0.0.1:7000/api/blogs/deleteBlog/${id}`, {
+      //!..........................To create backend functionality for this
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+      },
+      // body: JSON.stringify(),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        location.reload();
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
-  //   console.log(deleteButtons);
-  //   deleteButtons.forEach((button) => {
-  //     button.addEventListener('click', (e) => {
-  //       const deleteID = e.target.dataset; //!...................Troubleshoot here dataset.id?................................
-  //       console.log(deleteID);
-  //       //   deleteBlog(deleteID);
-  //     });
-  //   });
 }
 
-// async function deleteBlog(deleteID) {
-//   try {
-//     const response = await fetch(
-//       `http://127.0.0.1:7000/api/blogs/deleteBlog/${deleteID}`,
-//       {
-//         method: 'DELETE',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           Authorization: `JWT ${localStorage.getItem('authToken')}`,
-//         },
-//       },
-//     );
+// ?...................................................................Edit Blogs.....................................................start.......
+function updateUser(id) {
+  var title = document.getElementById('titleInput').value;
+  var author = document.getElementById('authorInput').value;
+  var body = document.getElementById('bodyTextarea').value;
+  var imageUrl = imgUrl;
 
-//     const blogs = await response.json();
-//     if (blogs.success == true) {
-//       location.reload();
-//     } else {
-//       alert('Failed to delete blog');
-//     }
-//   } catch (error) {
-//     console.log('Error deleting blog: ', error.message);
-//   }
-// }
-//!...............................DELETE FUNCTIONALITY(not yet working).......................end.............
+  fetch(`http://127.0.0.1:7000/api/users/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `JWT ${localStorage.getItem('authToken')}`,
+    },
+    // body: JSON.stringify(user),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      location.reload();
+    })
+    .catch((err) => {
+      alert(err);
+    });
+}
+//!.................................................................................................................................................
+var allEditButtons = document.querySelectorAll('.edit-btn');
+for (var i = 0; i < allEditButtons.length; i++) {
+  allEditButtons[i].onclick = function () {
+    // var tr = this.parentElement.parentElement;
+    // var td = tr.getElementsByTagName('TD');
+    // var index = tr.getAttribute('index');
 
-// ?...................................................................ViewBlogs_Finish...................................................end.......
+    // var imgTag1 = td[1].getElementsByTagName('IMG');
+    // var imageUrl1 = imgTag1[0].src;
+    // var author1 = td[2].innerHTML;
+    // var title1 = td[3].innerHTML;
+    // var body1 = td[4].innerHTML;
+    addBlogBtn.click();
 
-// ?...................................................................CreateBlogs...................................................start.......
+    saveBlogBtn.disabled = true;
+    updateBtn.disabled = false;
+
+    // author.value = author1;
+    // title.value = title1;
+    // body.value = body1;
+    // imageUrl.src = imageUrl1;
+
+    // updateBtn.onclick = function () {
+    //   blogsData[index] = {
+    //     imageUrl: uploadImage.value == '' ? blogImage.src : imgUrl,
+    //     title: title.value,
+    //     author: author.value,
+    //     body: body.value,
+    //   };
+    // form.reset('');
+    // validateInputs();
+    // closeModalBtn.click();
+    // location.reload();
+  };
+}
+
+// ?...................................................................Create Blogs...................................................start.......
 // Save Blog Button Functionality
 saveBlogBtn.onclick = function (e) {
   e.preventDefault();
@@ -160,7 +192,11 @@ saveBlogBtn.onclick = function (e) {
   //   closeModalBtn.click();
 };
 
-const registrationData = async (title, author, body) => {
+const registrationData = async (title, author, body, imageUrl) => {
+  var title = document.getElementById('titleInput').value;
+  var author = document.getElementById('authorInput').value;
+  var body = document.getElementById('bodyTextarea').value;
+  var imageUrl = imgUrl;
   try {
     // const response = await fetch(
     //   'https://repulsive-frog-jacket.cyclic.app/api/blogs/newBlog',
@@ -171,37 +207,19 @@ const registrationData = async (title, author, body) => {
         'content-type': 'application/json',
         // Authorization: `JWT ${localStorage.getItem('authToken')}`,
       },
-      body: JSON.stringify({ title, author, body }),
+      body: JSON.stringify({ title, author, body, imageUrl }),
     });
     const data = await response.json();
-    // console.log(data);
-    // if (data) {
-    //   location.reload();
-    // } else {
-    //   alert('Error creating blog');
-    // }
+    console.log(data);
+    if (data) {
+      location.reload();
+    } else {
+      alert('Error creating blog');
+    }
   } catch (error) {
     console.log('Error creating blog:', error.message);
   }
 };
-// // Storing Blogs in the localStorage
-// if (localStorage.getItem("blogsData") != null) {
-//     blogsData = JSON.parse(localStorage.getItem("blogsData"));
-// }
-
-// function registrationData(){
-//     blogsData.push({
-//         id: Math.random(),                                                         //Latest update
-//         blogImage: imgUrl == undefined ? "images/logo for add-blog-image.jpeg" : imgUrl,
-//         title: title.value,
-//         author: author.value,
-//         body: body.value,
-//         comment: []
-//     });
-//     console.log(blogsData);
-//     var blogsString = JSON.stringify(blogsData);
-//     localStorage.setItem("blogsData", blogsString);
-// }
 
 uploadImage.onchange = function () {
   if (uploadImage.files[0].size < 5000000) {
@@ -217,23 +235,6 @@ uploadImage.onchange = function () {
     alert('The File size is too big');
   }
 };
-
-// ?...................................................................CreateBlogs...................................................end.......
-
-// //Deleting blogs from the t-body
-// var deleteButtons = document.querySelectorAll('.del-btn');
-// for (var i = 0; i < deleteButtons.length; i++) {
-//   deleteButtons[i].onclick = function () {
-//     var tr = this.parentElement.parentElement;
-//     var id = tr.getAttribute('index');
-//     blogsData.splice(id, 1);
-//     localStorage.setItem('blogsData', JSON.stringify(blogsData));
-//     var ans = confirm('Are you sure you want to delete this blog?');
-//     if (ans == true) {
-//       tr.remove();
-//     }
-//   };
-// }
 
 //     //Edit || Update your standby blog
 
@@ -293,10 +294,10 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (validateInputs() == true) {
     // const imageUrl = blogImage.src;
-    const imageUrl = imgUrl;
     const author = form.author.value;
     const title = form.title.value;
     const body = form.body.value;
+    const imageUrl = imgUrl;
     console.log(imageUrl, author, title, body);
     // createArticle(cover, title, content);
     // clearForm();

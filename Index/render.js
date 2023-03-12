@@ -20,6 +20,7 @@ const fetchBlogs = async () => {
 fetchBlogs().then((res) => {
   console.log(res.data);
   res.data.forEach((item, index) => {
+    // console.log(item.comments.length);
     blogSection.insertAdjacentHTML(
       'afterbegin',
       `
@@ -33,9 +34,9 @@ fetchBlogs().then((res) => {
                             <div id="read-more">Read more...</div>
                         </a>
                             <div id="like-emoji">👍</div>
-                            <p id="likes-count-blogs-1">0</p>
+                            <p id="likes-count-blogs-1">${res.data[index].likes.length}</p>
                             <div id="comments-emoji">💬</div>
-                            <p id="comments-count-blogs-1">0</p>
+                            <p id="comments-count-blogs-1">${res.data[index].comments.length}</p>
                         </div>
                     </div>
                 </div>

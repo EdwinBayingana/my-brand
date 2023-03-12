@@ -1,34 +1,3 @@
-// const users = document.querySelector('#t-body');
-
-// const fetchUsers = async () => {
-//   try {
-//     const response = await fetch('http://127.0.0.1:7000/api/users', {
-//       method: 'GET',
-//     });
-//     const users = response.json();
-//     console.log(users);
-//   } catch (error) {
-//     console.log('Error fetching Users: ', error.message);
-//   }
-// };
-
-// fetchUsers().then((res) => {
-//   console.log(res);
-//   // res.data.forEach((user, index) => {
-//   //   users.insertAdjacentHTML(
-//   //     `afterbegin`,
-//   //     `
-//   //           <tr>
-//   //           <td>${index}</td>
-//   //           <td>${user.username}</td>
-//   //           <td>${user.email}</td>
-//   //           <td>Delete</td>
-//   //           </tr>
-//   //           `,
-//   //   );
-//   // });
-// });
-
 // const usersTable = document.getElementById('.users-table');
 const usersTable = document.getElementById('.t-body');
 
@@ -38,54 +7,92 @@ const usersTable = document.getElementById('.t-body');
 fetch('http://127.0.0.1:7000/api/users')
   .then((response) => response.json())
   .then((res) => {
-    //! console.log(users);
-    res.data.forEach((user) => {
-      // console.log(user);
-    });
     console.log(res);
-    // res.data.forEach((user) => {
-    //   console.log(user);
-    //   usersTable.insertAdjacentHTML(
-    //     `afterbegin`,
-    //     `
-    //               <ul>
-    //               <li>1</li>
-    //               <li>${user.username}</li>
-    //               <li>${user.email}</li>
-    //               <ul id="users-list-action">
-    //     <li class="edit-users">Edit</li>
-    //     <li class="delete-users">Delete</li>
-    //   </ul>
-    //               </ul>
+    const theTBody = document.querySelector('.t-body');
 
-    //               `,
-    //   );
-    // });
+    res.data.forEach((user, index) => {
+      // console.log(user);
+      // Render the table
+      const row = document.createElement('tr');
+      row.innerHTML = `
 
-    // users.data.forEach((user) => {
-    //   //   const theTBody = document.querySelector('t-body');
-    //   console.log(user);
-    //   const row = document.createElement('tr');
-    //   const indexCell = document.createElement('td');
-    //   const usernameCell = document.createElement('td');
-    //   const isAdminCell = document.createElement('td');
-    //   const actionsCell = document.createElement('td');
+  <td class="indexCell">
+    ${index + 1}
+  </td>
 
-    //   const deleteButton = document.createElement('button');
 
-    //   //   //* Now we assign values to the created cells
-    //   indexCell.textContent = 'Num1';
-    //   usernameCell.textContent = user.username;
-    //   isAdminCell.textContent = user.isAdmin;
-    //   deleteButton.textContent = 'delete';
+<td class="usernameCell">
+${user.username}
+</td>
 
-    //   row.appendChild(indexCell);
-    //   row.appendChild(usernameCell);
-    //   row.appendChild(isAdminCell);
-    //   row.appendChild(actionsCell);
+<td class="role">
+${user.isAdmin}
+</td>
 
-    //   //   usersTable.getElementById('.t-body').appendChild(row);
-    //   //   theTBody.appendChild(row);
-    // });
+<button class="editButton" style= "margin-top:25px"onclick="updateUser('${
+        user._id
+      }', ${user.isAdmin})">Edit</button>
+<button class="deleteButton" onclick="deleteUser('${user._id}')">Delete</button>
+
+`;
+
+      theTBody.appendChild(row);
+    });
   })
   .catch((err) => alert(err));
+
+function updateUser(id, isAdmin) {
+  const role = isAdmin ? false : true;
+  const user = {
+    id: id,
+    isAdmin: role,
+  };
+  console.log(user);
+  fetch(`http://127.0.0.1:7000/api/users/${id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `JWT ${localStorage.getItem('authToken')}`,
+    },
+    body: JSON.stringify(user),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      location.reload();
+    })
+    .catch((err) => {
+      alert(err);
+    });
+}
+
+function deleteUser(id) {
+  //*Deleting blogs from the t-body
+  var deleteButtons = document.querySelectorAll('.deleteButton');
+  console.log(deleteButtons);
+  // for (var i = 0; i < deleteButtons.length; i++) {
+  //   deleteButtons[i].onclick = function () {
+  //     var tr = this.parentElement.parentElement;
+  //     var ans = confirm('Are you sure you want to delete this blog?');
+  //     if (ans == true) {
+  //       tr.remove();
+  //     }
+  //   };
+  // }
+  fetch(`http://127.0.0.1:7000/api/users/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `JWT ${localStorage.getItem('authToken')}`,
+    },
+    // body: JSON.stringify(),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      location.reload();
+    })
+    .catch((err) => {
+      alert(err);
+    });
+}
