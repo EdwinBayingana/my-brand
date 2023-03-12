@@ -70,15 +70,7 @@ function deleteUser(id) {
   //*Deleting blogs from the t-body
   var deleteButtons = document.querySelectorAll('.deleteButton');
   console.log(deleteButtons);
-  // for (var i = 0; i < deleteButtons.length; i++) {
-  //   deleteButtons[i].onclick = function () {
-  //     var tr = this.parentElement.parentElement;
-  //     var ans = confirm('Are you sure you want to delete this blog?');
-  //     if (ans == true) {
-  //       tr.remove();
-  //     }
-  //   };
-  // }
+
   fetch(`http://127.0.0.1:7000/api/users/${id}`, {
     method: 'DELETE',
     headers: {
