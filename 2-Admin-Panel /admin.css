@@ -20,7 +20,7 @@ body {
 /* Left side */
 .left-side {
   background: rgba(41, 41, 43, 0.7);
-  /* border: solid grey; */
+  /* border: solid red; */
   width: 450px;
   height: 100%;
 }

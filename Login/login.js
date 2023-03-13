@@ -23,14 +23,16 @@ form.addEventListener('submit', (e) => {
   })
     .then((response) => response.json())
     .then((resp) => {
-      console.log(resp.data.email);
-      if (resp.data) {
+      console.log(resp.data.isAdmin);
+      if (resp.data.isAdmin === true) {
         localStorage.setItem('token', resp.token);
         localStorage.setItem('logedIn', resp.data.email);
-        location.href =
-          'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/2-Admin-Panel%20/blogs-admin.html';
+        location.href = '../2-Admin-Panel%20/blogs-admin.html';
         // location.href =
         //   'https://majestic-melomakarona-d7b4f4.netlify.app/2-Admin-Panel%20/admin.html';
+      }
+      if (resp.data.isAdmin === false) {
+        location.href = '../index.html';
       } else {
         console.log(resp.message);
         // alert(resp.message)

@@ -1,9 +1,6 @@
 const blogSection = document.querySelector('.blogs1-left-section');
 
-var id = localStorage.getItem('id');
-
-// let paramsId = new URLSearchParams(window.location.search);
-// let _id = paramsId.get('id');
+// var id = localStorage.getItem('id');
 let _id = localStorage.getItem('blogId');
 
 const fetchBlog = async () => {
@@ -17,6 +14,8 @@ const fetchBlog = async () => {
 };
 
 fetchBlog().then((res) => {
+  let div = document.createElement('div');
+  div.classList = 'comment__card';
   // console.log(res.data);
   // res.forEach((item, index) => {
   blogSection.insertAdjacentHTML(

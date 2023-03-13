@@ -54,8 +54,7 @@ fetchBlogs().then((res) => {
       // alert('Blog has been clicked on');
       // location.href =
       //   'https://majestic-melomakarona-d7b4f4.netlify.app/blogs1/blogs1';
-      location.href =
-        'file:///Users/zeds/Documents/Coding/ANDELA/Core%20Concepts/my-brand-integrated/my-brand/Blogs1/blogs1.html';
+      location.href = '../Blogs1/blogs1.html';
 
       console.log('The i is: ' + i);
     });
