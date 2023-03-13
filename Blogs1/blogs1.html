@@ -81,18 +81,48 @@
           </div>
           <div class="blogs1-comment-icons">
             <div class="blogs1-icons-section">
-              <p class="blogs1-like-icon" id="blogs1-5-icons">👍</p>
-              <p class="blogs1-fire-icon" id="blogs1-5-icons">🔥</p>
-              <p class="blogs1-heart-icon" id="blogs1-5-icons">❤️</p>
-              <p class="blogs1-dislike-icon" id="blogs1-5-icons">👎</p>
-              <p class="blogs1-laugh-icon" id="blogs1-5-icons">🤣</p>
+              <p
+                class="blogs1-like-icon"
+                id="blogs1-5-icons"
+                onclick="likeIncrement()"
+              >
+                👍
+              </p>
+              <p
+                class="blogs1-fire-icon"
+                id="blogs1-5-icons"
+                onclick="fireIncrement()"
+              >
+                🔥
+              </p>
+              <p
+                class="blogs1-heart-icon"
+                id="blogs1-5-icons"
+                onclick="loveIncrement()"
+              >
+                ❤️
+              </p>
+              <p
+                class="blogs1-dislike-icon"
+                id="blogs1-5-icons"
+                onclick="dislikeIncrement()"
+              >
+                👎
+              </p>
+              <p
+                class="blogs1-laugh-icon"
+                id="blogs1-5-icons"
+                onclick="LOLIncrement()"
+              >
+                🤣
+              </p>
             </div>
             <div class="blogs1-emoji-count-section">
-              <!-- <div id="likes-count">30</div>
-              <div id="fire-count">14</div>
-              <div id="heart-count">18</div>
-              <div id="dislike-count">4</div>
-              <div id="laugh-count">7</div> -->
+              <div id="likes-count"><p id="likesCount"></p></div>
+              <div id="fire-count"><p id="fireCount"></p></div>
+              <div id="heart-count"><p id="loveCount"></p></div>
+              <div id="dislike-count"><p id="dislikeCount"></p></div>
+              <div id="laugh-count"><p id="LOLCount"></p></div>
             </div>
           </div>
           <div class="blogs1-comment-container-middle-words">

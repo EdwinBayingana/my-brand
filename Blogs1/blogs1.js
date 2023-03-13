@@ -47,14 +47,18 @@ const validateInputs = () => {
 };
 
 // ?.........................................................................REACTIONS...................................................start......
+
+// ! LIKES
+
 // const reactionCountTable = document.querySelector('.blogs1-comment-icons');
 const reactionCountTable = document.querySelector(
   '.blogs1-emoji-count-section',
 );
-const fetchBlogs = async () => {
+const getABlog = async () => {
+  let ___id = localStorage.getItem('blogId');
   try {
     const response = await fetch(
-      'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      `http://127.0.0.1:7000/api/blogs/${___id}`,
       // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
       {
         method: 'GET',
@@ -67,21 +71,211 @@ const fetchBlogs = async () => {
   }
 };
 
-fetchBlogs().then((res) => {
-  // console.log(res.data);
-  // res.data.forEach((item, index) => {
-  //   console.log(item.likes);
-  //   reactionCountTable.insertAdjacentHTML(
-  //     'afterbegin',
-  //     `
-  //             <div id="likes-count">30</div>
-  //             <div id="fire-count">14</div>
-  //             <div id="heart-count">18</div>
-  //             <div id="dislike-count">4</div>
-  //             <div id="laugh-count">7</div>
-  //   `,
-  //   );
-  // });
+getABlog().then((res) => {
+  // console.log(res.data.likes.length);
+  var number = res.data.likes.length;
+  var likesCount = document.getElementById('likesCount');
+  likesCount.innerHTML = number;
+
+  likeIncrement = () => {
+    let ___id = localStorage.getItem('blogId');
+    fetch(`http://127.0.0.1:7000/api/like/${___id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `JWT ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then((response) => {
+        response.json();
+      })
+      .then((res) => {
+        theNewNumber = number + 1;
+        likesCount.innerHTML = theNewNumber;
+        location.reload();
+      });
+  };
+});
+
+// ! FIRE
+
+// const reactionCountTable = document.querySelector('.blogs1-comment-icons');
+const getABlogToFire = async () => {
+  let ___id = localStorage.getItem('blogId');
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:7000/api/blogs/${___id}`,
+      // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
+      {
+        method: 'GET',
+      },
+    );
+    const blogs = response.json();
+    return blogs;
+  } catch (error) {
+    console.log('Error fetching blogs: ', error.message);
+  }
+};
+
+getABlogToFire().then((res) => {
+  // console.log(res.data.fireReaction.length);
+  var number1 = res.data.fireReaction.length;
+  var fireCount = document.getElementById('fireCount');
+  fireCount.innerHTML = number1;
+
+  fireIncrement = () => {
+    let ___id = localStorage.getItem('blogId');
+    fetch(`http://127.0.0.1:7000/api/fire-reaction/${___id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        // Authorization: `JWT ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then((response) => {
+        response.json();
+      })
+      .then((res) => {
+        theNewNumber1 = number1 + 1;
+        fireCount.innerHTML = theNewNumber1;
+        // location.reload();
+      });
+  };
+});
+
+// ! LOVE
+
+const getABlogToLove = async () => {
+  let ___id = localStorage.getItem('blogId');
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:7000/api/blogs/${___id}`,
+      // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
+      {
+        method: 'GET',
+      },
+    );
+    const blogs = response.json();
+    return blogs;
+  } catch (error) {
+    console.log('Error fetching blogs: ', error.message);
+  }
+};
+
+getABlogToLove().then((res) => {
+  // console.log(res.data.loveReaction.length);
+  var number2 = res.data.loveReaction.length;
+  var loveCount = document.getElementById('loveCount');
+  loveCount.innerHTML = number2;
+
+  loveIncrement = () => {
+    let ___id = localStorage.getItem('blogId');
+    fetch(`http://127.0.0.1:7000/api/love-reaction/${___id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        // Authorization: `JWT ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then((response) => {
+        response.json();
+      })
+      .then((res) => {
+        theNewNumber2 = number2 + 1;
+        loveCount.innerHTML = theNewNumber2;
+        // location.reload();
+      });
+  };
+});
+
+// ! DISLIKE
+
+const getABlogToDislike = async () => {
+  let ___id = localStorage.getItem('blogId');
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:7000/api/blogs/${___id}`,
+      // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
+      {
+        method: 'GET',
+      },
+    );
+    const blogs = response.json();
+    return blogs;
+  } catch (error) {
+    console.log('Error fetching blogs: ', error.message);
+  }
+};
+
+getABlogToDislike().then((res) => {
+  // console.log(res.data.loveReaction.length);
+  var number3 = res.data.dislikeReaction.length;
+  var dislikeCount = document.getElementById('dislikeCount');
+  dislikeCount.innerHTML = number3;
+
+  dislikeIncrement = () => {
+    let ___id = localStorage.getItem('blogId');
+    fetch(`http://127.0.0.1:7000/api/dislike-reaction/${___id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        // Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then((response) => {
+        response.json();
+      })
+      .then((res) => {
+        theNewNumber3 = number3 + 1;
+        dislikeCount.innerHTML = theNewNumber3;
+        location.reload();
+      });
+  };
+});
+
+// ! LOL
+
+const getABlogToLOL = async () => {
+  let ___id = localStorage.getItem('blogId');
+  try {
+    const response = await fetch(
+      `http://127.0.0.1:7000/api/blogs/${___id}`,
+      // 'https://repulsive-frog-jacket.cyclic.app/api/blogs/getAllBlogs',
+      {
+        method: 'GET',
+      },
+    );
+    const blogs = response.json();
+    return blogs;
+  } catch (error) {
+    console.log('Error fetching blogs: ', error.message);
+  }
+};
+
+getABlogToLOL().then((res) => {
+  // console.log(res.data.loveReaction.length);
+  var number4 = res.data.thinkingReaction.length;
+  var dislikeCount = document.getElementById('LOLCount');
+  dislikeCount.innerHTML = number4;
+
+  LOLIncrement = () => {
+    let ___id = localStorage.getItem('blogId');
+    fetch(`http://127.0.0.1:7000/api/thinking-reaction/${___id}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        // Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    })
+      .then((response) => {
+        response.json();
+      })
+      .then((res) => {
+        theNewNumber4 = number4 + 1;
+        dislikeCount.innerHTML = theNewNumber4;
+        location.reload();
+      });
+  };
 });
 // ?.............................................REACTIONS..................................................................................end......
 
