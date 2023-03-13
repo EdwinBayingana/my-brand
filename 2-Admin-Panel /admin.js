@@ -44,36 +44,58 @@ fetchBlogs()
 
 // ? ............................................................Comments Count............................................................
 
-// const fetchComments = async () => {
-//   try {
-//     const response = await fetch(
-//       //   'https://repulsive-frog-jacket.cyclic.app/api/comment/getAllComments',
-//       'http://127.0.0.1:7000/api/comment/getAllComments',
-//       {
-//         method: 'GET',
-//       },
-//     );
-//     // const theComments = response.json();
-//     // return theComments;
-//   } catch (error) {
-//     console.log('Error fetching blogs: ', error.message);
-//   }
-// };
+const fetchComments = async () => {
+  try {
+    const response = await fetch(
+      //   'https://repulsive-frog-jacket.cyclic.app/api/comment/getAllComments',
+      'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      {
+        method: 'GET',
+      },
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res.data);
+        var number = 0;
+        res.data.forEach((blog) => {
+          console.log(blog);
+          number = number + blog.comments.length;
+        });
+        // alert(number);
+        var commentsCount = document.getElementById('commentsCount');
+        commentsCount.innerHTML = number;
+      });
+  } catch (error) {
+    console.log('Error fetching blogs: ', error.message);
+  }
+};
+fetchComments();
 
-// fetchComments()
-//   .then((response) => response.json())
-//   .then((res) => {
-//     console.log(res);
-//     analyticsSection.insertAdjacentHTML(
-//       'afterbegin',
-//       `
-//         <div id="analytics-container">
-//         <div class="analytics-icons"><p>💬</p></div>
-//         <div id="analytics-container-text">Comments</div>
-//         <div id="analytics-container-numbers" class="analytics-container-commentsNumber">5,867</div>
-//       </div>`,
-//     );
-//   })
-//   .catch((err) => {
-//     alert(err);
-//   });
+// ? ............................................................Likes Count............................................................
+
+const fetchLikes = async () => {
+  try {
+    const response = await fetch(
+      //   'https://repulsive-frog-jacket.cyclic.app/api/comment/getAllComments',
+      'http://127.0.0.1:7000/api/blogs/getAllBlogs',
+      {
+        method: 'GET',
+      },
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res.data);
+        var nombre = 0;
+        res.data.forEach((blog) => {
+          console.log(blog);
+          nombre = nombre + blog.likes.length;
+        });
+        // alert(number);
+        var likesCount = document.getElementById('likesCount');
+        likesCount.innerHTML = nombre;
+      });
+  } catch (error) {
+    console.log('Error fetching blogs: ', error.message);
+  }
+};
+fetchLikes();

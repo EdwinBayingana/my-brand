@@ -29,7 +29,7 @@ fetchBlogs().then((res) => {
                     <div class="author1-name">
                         ${item.author}
                         <a href="#" id="${res.data[index]._id}" class="read-more-render">
-                            <div class="author1-blog-preview">${item.body}</div>
+                            <div class="author1-blog-preview card_preview_text">${item.body}</div>
                             <div id="below-blog-preview-text">
                             <div id="read-more">Read more...</div>
                         </a>

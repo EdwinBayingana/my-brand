@@ -869,8 +869,9 @@ header ul h2:hover {
   /* border: solid #1372de; */
   width: 300px;
   height: 80px;
-  padding-top: 3%;
+  padding-top: 4%;
   font-size: 12px;
+  /* background: linear-gradient(to bottom, transparent, black); */
 }
 #below-blog-preview-text {
   /* border: solid #ccc; */
@@ -1238,6 +1239,12 @@ header ul h2:hover {
   border: solid black;
   margin-left: 86%;
   border-radius: 6px;
+}
+.card_preview_text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 /* ...................................................External Files are below................................................................. */
 

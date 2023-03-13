@@ -45,6 +45,7 @@ saveBlogBtn.onclick = function (e) {
 // ?...................................................................ViewBlogs........................................................................
 const blogsTable = document.querySelector('#table-data');
 // const articles = document.querySelector("#t-body");
+const saveAndUpdateBtns = document.getElementById('#add-blog-buttons-div');
 
 const fetchBlogs = async () => {
   try {
@@ -64,7 +65,7 @@ const fetchBlogs = async () => {
 
 fetchBlogs()
   .then((res) => {
-    console.log(res);
+    // console.log(res);
     res.data.forEach((item, index) => {
       blogsTable.insertAdjacentHTML(
         'afterbegin',
@@ -76,9 +77,9 @@ fetchBlogs()
       </td>
       <td>${item.author}</td>
       <td>${item.title}</td>
-      <td>${item.body}</td>
+      <td class="card_preview_text">${item.body}</td>
       <td>
-            <button class="edit-button-blogs edit-btn" onclick="updateUser('${
+            <button class="edit-button-blogs edit-btn" onclick="getBlogToUpdate('${
               item._id
             }')">Edit</button>
             <button class="delete-button-blogs del-btn" onclick="deleteBlog('${
@@ -96,6 +97,16 @@ fetchBlogs()
     alert(err);
   });
 
+// saveAndUpdateBtns.insertAdjacentHTML(
+//   'afterbegin',
+//   `
+// <button type="submit" id="add-blog-form-save-button">
+//           Save Blog
+//         </button>
+//         <button type="reset" id="Reset">Reset</button>
+//         <button disabled="disabled" id="update-btn">Update</button>
+// `,
+// );
 //?...............................................................Delete Blogs...................................................start.............
 function deleteBlog(id) {
   var ans = confirm('Are you sure you want to delete this blog?');
@@ -122,65 +133,173 @@ function deleteBlog(id) {
 }
 
 // ?...................................................................Edit Blogs.....................................................start.......
-function updateUser(id) {
+// const newURL = new URL(location.href);
+// const theBlogToUpdateId = newURL.hash.replace("#", "");
+
+// Get Blog
+const getBlogToUpdate = async (id) => {
+  try {
+    addBlogBtn.click();
+    const getBlog = await fetch(`http://127.0.0.1:7000/api/blogs/${id}`);
+    const res = await getBlog.json();
+    // console.log("This is the post: ", res);
+    blogImage.style.display = 'block';
+    blogImage.src = res.data.imageUrl;
+
+    // console.log(res.data.author);
+    author.value = res.data.author;
+    title.value = res.data.title;
+    body.value = res.data.body;
+    saveBlogBtn.disabled = true;
+    updateBtn.disabled = false;
+    localStorage.setItem('blogToEdit', id);
+  } catch (error) {
+    console.log('Error getting Blog: ', error.message);
+  }
+};
+
+const editBlog = async (title, author, body, imageUrl) => {
+  var _id = localStorage.getItem('blogToEdit');
+  // alert(_id);
   var title = document.getElementById('titleInput').value;
   var author = document.getElementById('authorInput').value;
   var body = document.getElementById('bodyTextarea').value;
   var imageUrl = imgUrl;
-
-  fetch(`http://127.0.0.1:7000/api/users/${id}`, {
-    method: 'PUT',
-    headers: {
-      'content-type': 'application/json',
-      Authorization: `JWT ${localStorage.getItem('authToken')}`,
-    },
-    // body: JSON.stringify(user),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
+  try {
+    // let id;
+    const response = await fetch(
+      `http://127.0.0.1:7000/api/blogs/updateBlog/${_id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `JWT ${localStorage.getItem('authToken')}`,
+        },
+        body: JSON.stringify({
+          title: title,
+          author: author,
+          body: body,
+          imageUrl,
+        }),
+      },
+    );
+    const data = await response.json();
+    if (data) {
       location.reload();
-    })
-    .catch((err) => {
-      alert(err);
-    });
-}
+    } else {
+      console.log('Error editing blog', error);
+      // alert("Error editing blog");
+    }
+  } catch (error) {
+    console.log('Error editing blog: ', error.message);
+  }
+};
+
+updateBtn.onclick = () => {
+  const title = document.getElementById('titleInput').value;
+  const author = document.getElementById('authorInput').value;
+  const body = document.getElementById('bodyTextarea').value;
+  const imageUrl = imgUrl;
+  // console.log(title);
+  editBlog(title, author, body, imageUrl);
+};
+
+//? updateBtn.onclick = async (title, author, body, imageUrl) => {
+//   try {
+//     const response = await fetch(
+//       `http://127.0.0.1:7000/api/blogs/updateBlog/${id}`,
+//       {
+//         method: 'PUT',
+//         headers: {
+//           'content-type': 'application/json',
+//           // Authorization: `JWT ${localStorage.getItem('authToken')}`,
+//         },
+//         body: JSON.stringify({
+//           title: title.value,
+//           author: author.value,
+//           body: body.value,
+//           imageUrl,
+//         }),
+//       },
+//     );
+//     const data = await response.json();
+//     if (data) {
+//       location.reload();
+//     } else {
+//       console.log('Error editing blog', error);
+//       // alert("Error editing blog");
+//     }
+//   } catch (error) {
+//     console.log('Error editing blog: ', error.message);
+//   }
+//? };
+
+// function getBlogToUpdate(id) {
+//   var title = document.getElementById('titleInput').value;
+//   var author = document.getElementById('authorInput').value;
+//   var body = document.getElementById('bodyTextarea').value;
+//   var imageUrl = imgUrl;
+//   var allEditButtons = document.querySelectorAll('.edit-btn');
+//   for (var i = 0; i < allEditButtons.length; i++) {
+//     allEditButtons[i].onclick = function () {
+//       addBlogBtn.click();
+//       var tr = this.parentElement.parentElement;
+//       var td = tr.getElementsByTagName('TD');
+//       var index = tr.getAttribute('index');
+
+//       var imgTag1 = td[1].getElementsByTagName('IMG');
+//       var imageUrl1 = imgTag1[0].src;
+//       var author1 = td[2].innerHTML;
+//       var title1 = td[3].innerHTML;
+//       var body1 = td[4].innerHTML;
+
+//       saveBlogBtn.disabled = true;
+//       updateBtn.disabled = false;
+
+//       // author.value = author1;
+//       // title.value = title1;
+//       // body.value = body1;
+//       // imageUrl.src = imageUrl1;
+
+//       // updateBtn.onclick = function () {
+//       //   blogsData[index] = {
+//       //     imageUrl: uploadImage.value == '' ? blogImage.src : imgUrl,
+//       //     title: title.value,
+//       //     author: author.value,
+//       //     body: body.value,
+//       //   };
+//       // form.reset('');
+//       // validateInputs();
+//       // closeModalBtn.click();
+//       // location.reload();
+//     };
+//   }
+
+//   fetch(`http://127.0.0.1:7000/api/blogs/updateBlog/${id}`, {
+//     method: 'PUT',
+//     headers: {
+//       'content-type': 'application/json',
+//       // Authorization: `JWT ${localStorage.getItem('authToken')}`,
+//     },
+//     body: JSON.stringify({}),
+//   })
+//     .then((response) =>
+//       response.json({
+//         title,
+//         author,
+//         body,
+//         imageUrl,
+//       }),
+//     )
+//     .then((data) => {
+//       console.log(data);
+//       // location.reload();
+//     })
+//     .catch((err) => {
+//       alert(err);
+//     });
+// }
 //!.................................................................................................................................................
-var allEditButtons = document.querySelectorAll('.edit-btn');
-for (var i = 0; i < allEditButtons.length; i++) {
-  allEditButtons[i].onclick = function () {
-    // var tr = this.parentElement.parentElement;
-    // var td = tr.getElementsByTagName('TD');
-    // var index = tr.getAttribute('index');
-
-    // var imgTag1 = td[1].getElementsByTagName('IMG');
-    // var imageUrl1 = imgTag1[0].src;
-    // var author1 = td[2].innerHTML;
-    // var title1 = td[3].innerHTML;
-    // var body1 = td[4].innerHTML;
-    addBlogBtn.click();
-
-    saveBlogBtn.disabled = true;
-    updateBtn.disabled = false;
-
-    // author.value = author1;
-    // title.value = title1;
-    // body.value = body1;
-    // imageUrl.src = imageUrl1;
-
-    // updateBtn.onclick = function () {
-    //   blogsData[index] = {
-    //     imageUrl: uploadImage.value == '' ? blogImage.src : imgUrl,
-    //     title: title.value,
-    //     author: author.value,
-    //     body: body.value,
-    //   };
-    // form.reset('');
-    // validateInputs();
-    // closeModalBtn.click();
-    // location.reload();
-  };
-}
 
 // ?...................................................................Create Blogs...................................................start.......
 // Save Blog Button Functionality
@@ -192,7 +311,7 @@ saveBlogBtn.onclick = function (e) {
   //   closeModalBtn.click();
 };
 
-const registrationData = async (title, author, body, imageUrl) => {
+const registrationData = async (author, title, body, imageUrl) => {
   var title = document.getElementById('titleInput').value;
   var author = document.getElementById('authorInput').value;
   var body = document.getElementById('bodyTextarea').value;
@@ -294,11 +413,11 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (validateInputs() == true) {
     // const imageUrl = blogImage.src;
-    const author = form.author.value;
-    const title = form.title.value;
-    const body = form.body.value;
-    const imageUrl = imgUrl;
-    console.log(imageUrl, author, title, body);
+    // const author = form.author.value;
+    // const title = form.title.value;
+    // const body = form.body.value;
+    // const imageUrl = imgUrl;
+    // console.log(imageUrl, author, title, body);
     // createArticle(cover, title, content);
     // clearForm();
     // window.location.href = 'index.html';
